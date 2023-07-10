@@ -6,8 +6,10 @@ export default defineNuxtConfig({
     'nuxt-icon', 
     'nuxt-lodash', 
     // '@nuxtjs/supabase', 
+    '@formkit/auto-animate',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
+    '@vueuse/nuxt',
   ],
   css: ['~/assets/css/main.css'],
   postcss: {
