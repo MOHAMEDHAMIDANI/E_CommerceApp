@@ -1,9 +1,9 @@
 <template>
   <div class=" w-full h-fit">
     <!-- info section  -->
-    <div class="bg-mainColor w-full h-6  flex justify-around content-center">
+    <div class="bg-mainColor w-full h-6  flex justify-between content-center">
       <!-- phone number  -->
-      <div class="flex content-center w-fit cursor-pointer ">
+      <div v-if="props.isUser" class="flex  content-center w-fit cursor-pointer ">
         <Icon class="my-auto ml-1" name="material-symbols:phone-in-talk" size="20" color="white" />
         <h5 class="text-[12px] my-auto text-white font-thin ">+213792579563</h5>
       </div>
@@ -49,7 +49,7 @@
     </div>
 
     <!-- nav section   -->
-    <div class="flex justify-between content-center w-full h-9 bg-white dark:bg-black rounded-b-sm shadow-lg">
+    <div :class=" props.isDown ? 'fixed top-0': ''" class="flex justify-between content-center w-full h-9 duration-500  dark:bg-black rounded-b-sm shadow-lg">
       <div class="container mx-auto mt-0 flex justify-between content-center ">
         <!-- brand and category section  -->
         <div class="flex justify-between content-center h-full ">
@@ -130,26 +130,33 @@
               <div v-if="isProfile" v-motion-slide-top class="z-50 absolute top-10 -right-12">
                 <div class="w-[150px] bg-white shadow  rounded" >
                   <!-- profile  -->
-
-                  <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
+                  <nuxt-link to="" v-if="isUser">
+                    <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
                     <Icon name="material-symbols:person-pin-outline" size="25" class="my-1"/>
-                    <h3 class=" capitalize text-center text-black mt-0.5"> profile</h3>
-                  </div>
+                      <h3 class=" capitalize text-center text-black mt-0.5"> profile</h3>
+                    </div>
+                  </nuxt-link>
                   <!-- settings  -->
-                  <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
+                  <nuxt-link to="" v-if="isUser">
+                    <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
                     <Icon name="material-symbols:settings-account-box" size="25" class="my-1"/>
-                    <h3 class=" capitalize text-center text-black mt-0.5"> settings</h3>
-                  </div>
+                      <h3 class=" capitalize text-center text-black mt-0.5"> settings</h3>
+                    </div>
+                  </nuxt-link>
                   <!-- login / register  -->
-                  <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
+                  <nuxt-link to="/Register" >
+                    <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
                     <Icon name="ic:baseline-log-in" size="25" class="my-1" color=" rgb(4 120 87)"/>
-                    <h3 class=" capitalize text-center  mt-0.5 text-emerald-700"> register</h3>
-                  </div>
+                      <h3 class=" capitalize text-center  mt-0.5 text-emerald-700"> register</h3>
+                    </div>
+                  </nuxt-link>
                   <!-- sign out  -->
-                  <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
+                  <nuxt-link to="" v-if="isUser" >
+                    <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
                     <Icon name="streamline:interface-login-circle-arrow-enter-left-login-point-circle" size="25" class="my-1" color="red"/>
-                    <h3 class=" capitalize text-center  mt-0.5 text-red-400"> logout</h3>
-                  </div>
+                      <h3 class=" capitalize text-center  mt-0.5 text-red-400"> logout</h3>
+                    </div>
+                  </nuxt-link>
                 </div>
               </div>
             </div>
@@ -180,7 +187,13 @@ const currentLang = ref("Eng");
 const isCategory = ref(false)
 const isSearching = ref(false);
 const isProfile = ref(false);
+interface Props {
+  isDown : boolean, 
+  isUser : boolean,
+}
 
+const props = defineProps<Props>()
+  console.log(props.isUser , props.isDown);
 // functions
 const chooseLang = (index: number) => {
   currentLang.value = language[index]

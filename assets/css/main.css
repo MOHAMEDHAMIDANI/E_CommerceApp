@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ body {
+    height: 200vh;
+ }
+ html {
+    scroll-behavior: smooth;
+ }
