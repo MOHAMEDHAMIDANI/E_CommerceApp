@@ -82,10 +82,10 @@
           </div> -->
         </div>
         <!-- other side of the nav -->
-        <div class="flex h-full w-full justify-evenly content-center">
+        <div class="flex h-full w-full justify-between content-center">
           <!-- pages  -->
 
-          <div class="flex justify-between content-center w-40 h-full ">
+          <div class="flex justify-between content-center w-40 h-full ml-10 ">
             <nuxt-link class="self-center" to="/">
               <h4 class="mr-1 capitalize text-center  text-[12px] text-slate-400 "> deals</h4>
             </nuxt-link>
@@ -105,7 +105,7 @@
                 class="text-sm h-5 w-full  bg-greyColor pl-2 outline-none rounded-xl ">
             </form>
             <!-- searched items  -->
-            <div @mouseleave="isSearching = false" v-motion-left v-if="isSearching" class="bg-white shadow-lg rounded-sm max-h-[300px] overflow-y-auto">
+            <div @mouseleave="isSearching = false" v-motion-left v-if="isSearching" class="z-50 bg-white shadow-lg rounded-sm max-h-[300px] overflow-y-auto">
               <searchitem v-motion-pop />
               <searchitem v-motion-pop />
               <searchitem v-motion-pop />

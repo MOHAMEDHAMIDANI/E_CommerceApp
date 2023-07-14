@@ -1,7 +1,7 @@
 <template>
-    <div >
+    <div class="">
         <Nav :isUser="isUser"  :isDown="isDown" />
-        <div class="container">
+        <div class="container mx-auto">
             <slot />
         </div>
         <Uparrow @click="goback" :isDown="isDown"/>
@@ -10,8 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { useScroll } from '@vueuse/core'
-const isUser = ref(false)
+const isUser = ref(true)
 const isDown = ref(false)
 onMounted(() => {
     window.addEventListener("scroll" , (e) =>{
