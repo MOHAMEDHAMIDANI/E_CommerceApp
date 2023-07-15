@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   modules: [
     'nuxt-icon', 
     'nuxt-lodash', 
-    // '@nuxtjs/supabase', 
+    '@nuxtjs/supabase', 
     '@formkit/auto-animate',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',

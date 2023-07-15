@@ -1,10 +1,10 @@
 <template>
     <div class="">
         <Nav :isUser="isUser"  :isDown="isDown" />
-        <div class="container mx-auto">
+        <div class="container -z-1 mx-auto">
             <slot />
         </div>
-        <Uparrow @click="goback" :isDown="isDown"/>
+        <Uparrow @click="Go_back" :isDown="isDown"/>
         <Footer />
     </div>
 </template>
@@ -23,7 +23,7 @@ onMounted(() => {
         }
     })
 })
-const goback = () =>(
+const Go_back = () =>(
     window.scrollTo({
         top : 0 ,
         left : 0 ,

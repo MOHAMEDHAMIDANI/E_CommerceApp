@@ -49,7 +49,7 @@
     </div>
 
     <!-- nav section   -->
-    <div :class=" props.isDown ? 'fixed top-0': ''" class="flex justify-between content-center w-full h-9 duration-500  dark:bg-black rounded-b-sm shadow-lg">
+    <div :class=" props.isDown ? 'fixed top-0': ''" class="flex justify-between content-center w-full h-10 duration-500  dark:bg-black rounded-b-sm shadow-lg">
       <div class="container mx-auto mt-0 flex justify-between content-center ">
         <!-- brand and category section  -->
         <div class="flex justify-between content-center h-full ">
@@ -144,7 +144,7 @@
                     </div>
                   </nuxt-link>
                   <!-- login / register  -->
-                  <nuxt-link to="/Register" >
+                  <nuxt-link to="/Register-Login" >
                     <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
                     <Icon name="ic:baseline-log-in" size="25" class="my-1" color=" rgb(4 120 87)"/>
                       <h3 class=" capitalize text-center  mt-0.5 text-emerald-700"> register</h3>
