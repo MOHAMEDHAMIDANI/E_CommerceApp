@@ -49,37 +49,15 @@
     </div>
 
     <!-- nav section   -->
-    <div :class=" props.isDown ? 'fixed top-0': ''" class="flex justify-between content-center w-full h-10 duration-500  dark:bg-black rounded-b-sm shadow-lg">
+    <div :class=" props.isDown ? 'fixed top-0 bg-transparent backdrop-blur-lg drop-shadow-md': ''" class="z-50 flex ease-in-out justify-between bg-white content-center w-full h-11 duration-500  dark:bg-black rounded-b-sm shadow-lg rounded ">
       <div class="container mx-auto mt-0 flex justify-between content-center ">
         <!-- brand and category section  -->
         <div class="flex justify-between content-center h-full ">
           <!-- brand  -->
           <div class=" w-[130px] flex justify-between content-center">
-            <img class="w-8" src="../assets/images/images-removebg-preview.png" alt="">
+            <img class="w-10" src="../assets/images/images-removebg-preview (1).png" alt="">
             <h3 class="text-mainColor text-[15px] my-auto font-medium ">Mr.Shopping</h3>
           </div>
-          <!-- categories container -->
-          <!-- <div class=" h-6 w-24  my-auto relative">
-            <div class="w-full h-full flex justify-evenly bg-greyColor rounded-2xl shadow">
-              <h3 class=" capitalize text-black">category</h3>
-              <Icon @click="isCategory = !isCategory" class=" cursor-pointer duration-500 mt-1"
-                :class="isCategory ? 'rotate-180' : ''" name="material-symbols:keyboard-arrow-down" size="25"
-                color="black" />
-            </div>
-            categories
-            <div v-if="isCategory" class="z-50 absolute top-8 -left-7">
-              <transition name="fade">
-                <ul class="w-[200px] max-h-[200px] overflow-y-scroll rounded-sm bg-white shadow-md">
-                  <nuxt-link v-for="(category, index ) in categories" :key="index" to="/">
-                    <li v-motion-pop
-                      class=" min-h-[30px] capitalize line-clamp-2  border-b-gray border-b  hover:bg-slate-200 duration-500">
-                      <h3 class="text-sm text-center my-1 leading-4 cursor-pointer">{{ category }}</h3>
-                    </li>
-                  </nuxt-link>
-                </ul>
-              </transition>
-            </div>
-          </div> -->
         </div>
         <!-- other side of the nav -->
         <div class="flex h-full w-full justify-between content-center">
@@ -97,15 +75,15 @@
             </nuxt-link>
           </div>
           <!-- search -->
-          <div >
-            <form action="search" class="relative mt-1.5 mb-3 md:w-[200px] 2xl:w-[500px]">
-              <Icon name="ph:magnifying-glass-bold" size="20" color="black"
-                class=" absolute top-1 right-1 cursor-pointer" />
+          <div class="relative" v-if="isUser">
+            <form action="search" class="relative mt-2.5 mb-4  md:w-[250px] 2xl:w-[500px]">
+              <Icon name="ph:magnifying-glass-bold" size="25" color="#04C988"
+                class=" absolute top-0.5 right-1 cursor-pointer" />
               <input @click="isSearching = true" placeholder="Search for product" type="text"
-                class="text-sm h-5 w-full  bg-greyColor pl-2 outline-none rounded-xl ">
+                class="text-sm h-6 w-full  bg-greyColor pl-2 outline-thirdColor rounded-xl ">
             </form>
             <!-- searched items  -->
-            <div @mouseleave="isSearching = false" v-motion-left v-if="isSearching" class="z-50 bg-white shadow-lg rounded-sm max-h-[300px] overflow-y-auto">
+            <div @mouseleave="isSearching = false" v-motion-left v-if="isSearching" class="drop-shadow-lg rounded-sm max-h-[300px] overflow-y-auto duration-1000">
               <searchitem v-motion-pop />
               <searchitem v-motion-pop />
               <searchitem v-motion-pop />
@@ -120,50 +98,51 @@
             </div>
           </div>
           <!-- account and cart -->
-          <div class="h-full w-[100px] flex justify-around content-center">
+          <div class="h-full w-[200px] flex justify-around content-center drop-shadow-sm">
             <!-- account -->
             <div class="relative self-center ">
-              <div class="w-[30px]  h-[30px] bg-greyColor rounded-2xl shadow cursor-pointer hover:bg-slate-200 duration-1000"  >
-                <Icon class="absolute top-[45%]  left-[50%] -translate-x-[50%] -translate-y-[50%]" name="ic:round-person" size="25" color="black" @click="isProfile = !isProfile" />
-              </div>
+              <div class="flex justify-evenly cursor-pointer hover:border-thirdColor border-2 content-center my-auto hover:bg-greyColor duration-300 h-6  w-[100px] rounded-2xl " @click="isProfile = !isProfile">
+              <Icon class="my-auto" name="ic:baseline-person-outline" size="25" color="grey"/>
+                <h3 class="text-center my-auto text-[15px]" >Account</h3>
+            </div>
               <!-- stuff container  -->
-              <div v-if="isProfile" v-motion-slide-top class="z-50 absolute top-10 -right-12">
-                <div class="w-[150px] bg-white shadow  rounded" >
+              <div v-if="isProfile" v-motion-slide-top class="absolute top-10 -left-5 ">
+                <div class="w-[150px] max-h-[200px] flex flex-col justify-evenly content-center  shadow  bg-transparent bg-opacity-80 backdrop-blur-sm rounded drop-shadow-sm" >
                   <!-- profile  -->
                   <nuxt-link to="" v-if="isUser">
-                    <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
-                    <Icon name="material-symbols:person-pin-outline" size="25" class="my-1"/>
-                      <h3 class=" capitalize text-center text-black mt-0.5"> profile</h3>
+                    <div class="h-[50px]  flex justify-evenly hover:bg-greyColor content-center duration-700 cursor-pointer border-b-2 border-secondColor rounded">
+                    <Icon name="material-symbols:person-pin-outline" size="25" class="my-auto"/>
+                      <h3 class=" capitalize text-center text-black my-auto"> profile</h3>
                     </div>
                   </nuxt-link>
                   <!-- settings  -->
                   <nuxt-link to="" v-if="isUser">
-                    <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
-                    <Icon name="material-symbols:settings-account-box" size="25" class="my-1"/>
-                      <h3 class=" capitalize text-center text-black mt-0.5"> settings</h3>
+                    <div class="h-[50px]  flex justify-evenly hover:bg-greyColor content-center duration-700 cursor-pointer border-b-2 border-secondColor rounded">
+                    <Icon name="material-symbols:settings-account-box" size="25" class="my-auto"/>
+                      <h3 class=" capitalize text-center text-black my-auto"> settings</h3>
                     </div>
                   </nuxt-link>
                   <!-- login / register  -->
                   <nuxt-link to="/Register-Login" >
-                    <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
-                    <Icon name="ic:baseline-log-in" size="25" class="my-1" color=" rgb(4 120 87)"/>
-                      <h3 class=" capitalize text-center  mt-0.5 text-emerald-700"> register</h3>
+                    <div class="h-[50px]  flex justify-evenly hover:bg-greyColor content-center duration-700 cursor-pointer border-b-2 border-secondColor rounded">
+                    <Icon name="ic:baseline-log-in" size="25" class="my-2" color="#04C988"/>
+                      <h3 class=" capitalize text-center  mt-1.5 text-thirdColor"> register</h3>
                     </div>
                   </nuxt-link>
                   <!-- sign out  -->
                   <nuxt-link to="" v-if="isUser" >
-                    <div class="flex justify-evenly hover:bg-slate-200 content-center duration-1000 cursor-pointer border-b-2 border-secondColor">
-                    <Icon name="streamline:interface-login-circle-arrow-enter-left-login-point-circle" size="25" class="my-1" color="red"/>
-                      <h3 class=" capitalize text-center  mt-0.5 text-red-400"> logout</h3>
+                    <div class="h-[50px]  flex justify-evenly hover:bg-greyColor content-center duration-700 cursor-pointer border-b-2 border-secondColor v">
+                    <Icon name="streamline:interface-login-circle-arrow-enter-left-login-point-circle" size="25" class="my-2" color="rgb(153 27 27)"/>
+                      <h3 class=" capitalize text-center  mt-1.5 text-red-800"> logout</h3>
                     </div>
                   </nuxt-link>
                 </div>
               </div>
             </div>
-            <!-- shopping cart  -->
-            <div class="w-[30px] relative h-[30px] bg-greyColor rounded-2xl shadow cursor-pointer hover:bg-slate-200 duration-1000 self-center">
-              <Icon class="absolute top-[50%]  left-[50%] -translate-x-[50%] -translate-y-[50%]" name="material-symbols:shopping-cart" size="22" color="black"/>
-              <span class="w-[12px] rounded-full text-[8px]  text-white text-center  h-[12px] bg-mainColor absolute top-[2px] right-[5px]" >20</span>
+            <div class="relative flex justify-evenly cursor-pointer hover:border-thirdColor border-2 content-center my-auto hover:bg-greyColor duration-300 h-6 w-[90px] rounded-2xl ">
+              <Icon class="my-auto" name="ph:shopping-cart-simple-bold" size="25" color="grey"/>
+                <h3 class="text-center text-sm" >Cart</h3>
+              <span class="w-[14px] rounded-full text-[8px] border-2 border-transparent text-white text-center h-[14px] bg-mainColor absolute top-[-7px] right-[-2.5px]" >20</span>
             </div>
           </div>
         </div>

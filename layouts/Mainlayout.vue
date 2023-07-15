@@ -1,7 +1,7 @@
 <template>
     <div class="">
         <Nav :isUser="isUser"  :isDown="isDown" />
-        <div class="container -z-1 mx-auto">
+        <div class="container mx-auto">
             <slot />
         </div>
         <Uparrow @click="Go_back" :isDown="isDown"/>
@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-const isUser = ref(true)
+const isUser = ref(false)
 const isDown = ref(false)
 onMounted(() => {
     window.addEventListener("scroll" , (e) =>{

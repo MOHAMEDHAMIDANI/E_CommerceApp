@@ -1,0 +1,22 @@
+<!-- categories container -->
+          <!-- <div class=" h-6 w-24  my-auto relative">
+            <div class="w-full h-full flex justify-evenly bg-greyColor rounded-2xl shadow">
+              <h3 class=" capitalize text-black">category</h3>
+              <Icon @click="isCategory = !isCategory" class=" cursor-pointer duration-500 mt-1"
+                :class="isCategory ? 'rotate-180' : ''" name="material-symbols:keyboard-arrow-down" size="25"
+                color="black" />
+            </div>
+            categories
+            <div v-if="isCategory" class="z-50 absolute top-8 -left-7">
+              <transition name="fade">
+                <ul class="w-[200px] max-h-[200px] overflow-y-scroll rounded-sm bg-white shadow-md">
+                  <nuxt-link v-for="(category, index ) in categories" :key="index" to="/">
+                    <li v-motion-pop
+                      class=" min-h-[30px] capitalize line-clamp-2  border-b-gray border-b  hover:bg-slate-200 duration-500">
+                      <h3 class="text-sm text-center my-1 leading-4 cursor-pointer">{{ category }}</h3>
+                    </li>
+                  </nuxt-link>
+                </ul>
+              </transition>
+            </div>
+          </div> -->
