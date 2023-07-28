@@ -2,7 +2,8 @@
 <template>
   <div>
     <Mainlayout>
-      
+      <Hero />
+      <category />
     </Mainlayout>
   </div>
 </template>

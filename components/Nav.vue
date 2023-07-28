@@ -1,9 +1,9 @@
 <template>
   <div class=" w-full h-fit">
     <!-- info section  -->
-    <div class="bg-mainColor w-full h-6  flex justify-between content-center">
+    <div class="bg-mainColor w-full h-6  flex justify-between content-center relative top-0 left-0">
       <!-- phone number  -->
-      <div v-if="props.isUser" class="flex  content-center w-fit cursor-pointer ">
+      <div v-if="!props.isUser" class="flex ml-8 content-center w-fit cursor-pointer ">
         <Icon class="my-auto ml-1" name="material-symbols:phone-in-talk" size="20" color="white" />
         <h5 class="text-[12px] my-auto text-white font-thin ">+213792579563</h5>
       </div>
@@ -29,7 +29,7 @@
           </transition>
         </div>
         <!-- toggle dark mode -->
-        <div class=" w-12 my-auto mx-2">
+        <div class=" w-12 my-auto mx-2 mr-8">
           <div class="my-auto h-5 bg-thirdColor rounded-xl relative">
 
             <transition name="FromDarkToWhite">
@@ -49,8 +49,8 @@
     </div>
 
     <!-- nav section   -->
-    <div :class=" props.isDown ? 'fixed top-0 bg-transparent backdrop-blur-lg drop-shadow-md': ''" class="z-50 flex ease-in-out justify-between bg-white content-center w-full h-11 duration-500  dark:bg-black rounded-b-sm shadow-lg rounded ">
-      <div class="container mx-auto mt-0 flex justify-between content-center ">
+    <div :class=" props.isDown ? 'top-0 fixed  bg-transparent backdrop-blur-lg drop-shadow-md': ''" class="z-50 flex relative top-[0px] justify-between bg-white content-center w-full h-11 duration-500  dark:bg-black shadow-lg">
+      <div class="container mx-auto mt-0 flex justify-evenly content-center ">
         <!-- brand and category section  -->
         <div class="flex justify-between content-center h-full ">
           <!-- brand  -->
@@ -63,9 +63,9 @@
         <div class="flex h-full w-full justify-between content-center">
           <!-- pages  -->
 
-          <div class="flex justify-between content-center w-40 h-full ml-10 ">
+          <div class="flex justify-evenly content-center w-40 h-full ml-3 ">
             <nuxt-link class="self-center" to="/">
-              <h4 class="mr-1 capitalize text-center  text-[12px] text-slate-400 "> deals</h4>
+              <h4 class=" capitalize text-center  text-[12px] text-slate-400 "> deals</h4>
             </nuxt-link>
             <nuxt-link class="self-center" to="/">
               <h4 class=" capitalize text-center text-[12px] text-slate-400 "> what's new</h4>
@@ -75,15 +75,15 @@
             </nuxt-link>
           </div>
           <!-- search -->
-          <div class="relative" v-if="isUser">
-            <form action="search" class="relative mt-2.5 mb-4  md:w-[250px] 2xl:w-[500px]">
+          <div class="relative" v-if="!isUser">
+            <form action="search" class="relative mt-2.5 mb-4  md:w-[310px] 2xl:w-[500px]">
               <Icon name="ph:magnifying-glass-bold" size="25" color="#04C988"
                 class=" absolute top-0.5 right-1 cursor-pointer" />
               <input @click="isSearching = true" placeholder="Search for product" type="text"
                 class="text-sm h-6 w-full  bg-greyColor pl-2 outline-thirdColor rounded-xl ">
             </form>
             <!-- searched items  -->
-            <div @mouseleave="isSearching = false" v-motion-left v-if="isSearching" class="drop-shadow-lg rounded-sm max-h-[300px] overflow-y-auto duration-1000">
+            <div @mouseleave="isSearching = false" v-motion-left v-if="isSearching" class="drop-shadow-lg relative rounded-sm max-h-[300px] overflow-y-auto duration-1000">
               <searchitem v-motion-pop />
               <searchitem v-motion-pop />
               <searchitem v-motion-pop />
@@ -101,13 +101,13 @@
           <div class="h-full w-[200px] flex justify-around content-center drop-shadow-sm">
             <!-- account -->
             <div class="relative self-center ">
-              <div class="flex justify-evenly cursor-pointer hover:border-thirdColor border-2 content-center my-auto hover:bg-greyColor duration-300 h-6  w-[100px] rounded-2xl " @click="isProfile = !isProfile">
+              <div class="flex justify-evenly cursor-pointer hover:border-thirdColor border-2 content-center my-auto hover:bg-greyColor duration-300 h-6  w-[90px] rounded-2xl " @click="isProfile = !isProfile">
               <Icon class="my-auto" name="ic:baseline-person-outline" size="25" color="grey"/>
                 <h3 class="text-center my-auto text-[15px]" >Account</h3>
             </div>
               <!-- stuff container  -->
               <div v-if="isProfile" v-motion-slide-top class="absolute top-10 -left-5 ">
-                <div class="w-[150px] max-h-[200px] flex flex-col justify-evenly content-center  shadow  bg-transparent bg-opacity-80 backdrop-blur-sm rounded drop-shadow-sm" >
+                <div class="w-[150px] max-h-[200px] flex flex-col justify-evenly content-center  shadow  bg-white bg-opacity-80 rounded " >
                   <!-- profile  -->
                   <nuxt-link to="" v-if="isUser">
                     <div class="h-[50px]  flex justify-evenly hover:bg-greyColor content-center duration-700 cursor-pointer border-b-2 border-secondColor rounded">
@@ -139,10 +139,10 @@
                 </div>
               </div>
             </div>
-            <div class="relative flex justify-evenly cursor-pointer hover:border-thirdColor border-2 content-center my-auto hover:bg-greyColor duration-300 h-6 w-[90px] rounded-2xl ">
+            <div class="relative flex justify-evenly cursor-pointer hover:border-thirdColor border-2 content-center my-auto hover:bg-greyColor duration-300 h-6 w-[80px] rounded-2xl ">
               <Icon class="my-auto" name="ph:shopping-cart-simple-bold" size="25" color="grey"/>
                 <h3 class="text-center text-sm" >Cart</h3>
-              <span class="w-[14px] rounded-full text-[8px] border-2 border-transparent text-white text-center h-[14px] bg-mainColor absolute top-[-7px] right-[-2.5px]" >20</span>
+              <span class="w-[15px] rounded-full text-[8px] border-2 border-transparent text-white text-center h-[15px] bg-mainColor absolute top-[-7px] right-[-2.5px]" >20</span>
             </div>
           </div>
         </div>
@@ -185,20 +185,7 @@ watch(isSearching, () => {
 </script>
 
 <style scoped>
-::-webkit-scrollbar {
-  width: 10px;
-}
 
-::-webkit-scrollbar-track {
-  background-color: #014A32;
-  border-radius: 100vw;
-
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #04C988;
-  border-radius: 100vw;
-}
 
 .FromDarkToWhite-enter-active {
   transition: all 0.3s ease-out;

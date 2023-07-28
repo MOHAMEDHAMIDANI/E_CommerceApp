@@ -14,13 +14,13 @@
                     </div>
                     <form class="">
                         <div class="flex  justify-evenly  flex-col h-[250px] duration-300" v-if="isRegister" v-motion-pop>
-                            <input v-motion-slide-right type="email"
+                            <input v-motion-slide-right type="email" required
                                 class="duration-200  mx-auto h-8 w-[290px] caret-thirdColor bg-greyColor shadow-inner  pl-2 rounded outline-thirdColor "
                                 placeholder=" Your Email" v-model="RegisterEmail">
-                            <input v-motion-slide-right type="password"
+                            <input v-motion-slide-right type="password" required
                                 class="duration-300  mx-auto  h-8 w-[290px] caret-thirdColor bg-greyColor shadow-inner  pl-2 rounded outline-thirdColor "
                                 placeholder="Your Password" v-model="RegisterPassword">
-                            <input v-motion-slide-right type="password"
+                            <input v-motion-slide-right type="password" required
                                 class="duration-500  mx-auto  h-8 w-[290px] caret-thirdColor bg-greyColor shadow-inner  pl-2 rounded outline-thirdColor "
                                 placeholder=" Confirm Your Password" v-model="RegisterPasswordConfirmation">
                             <button v-motion-slide-right type="submit" @click.prevent="signUp"
@@ -28,13 +28,13 @@
                                 register</button>
                         </div>
                         <div class="flex justify-evenly  flex-col h-[200px] duration-300" v-else v-motion-pop>
-                            <input v-motion-slide-right type="email"
+                            <input v-motion-slide-right type="email" required
                                 class="duration-200  mx-auto h-8 w-[290px] caret-thirdColor bg-greyColor shadow-inner  pl-2 rounded outline-thirdColor"
                                 placeholder=" Your Email" v-model="LoginEmail">
-                            <input v-motion-slide-right type="password"
+                            <input v-motion-slide-right type="password" required
                                 class="duration-500  mx-auto  h-8 w-[290px] caret-thirdColor bg-greyColor shadow-inner  pl-2 rounded outline-thirdColor "
                                 placeholder="Your Password" v-model="LoginPassword">
-                            <button v-motion-slide-right type="submit"
+                            <button v-motion-slide-right type="submit" @click="SignIn"
                                 class="duration-700 mx-auto hover:bg-secondColor  h-8 w-[290px] bg-thirdColor text-white shadow-md outline-none pl-2 rounded text-lg capitalize">
                                 Sign In</button>
                         </div>
@@ -73,7 +73,7 @@
 <script setup lang="js">
 const supabase = useSupabaseClient()
 import Mainlayout from '../layouts/Mainlayout.vue';
-const route = useRouter();
+const router = useRouter();
 const isRegister = ref(true)
 const LoginEmail = ref('');
 const LoginPassword = ref('');
@@ -95,6 +95,7 @@ const signUp = async () => {
                 email: RegisterEmail.value,
                 password: RegisterPassword.value,
             });
+            console.log(error)
             if (error) throw error
             isRegister.value = false;
         } catch (error) {
@@ -112,7 +113,9 @@ const SignIn = async () => {
             password: LoginPassword.value,
         })
         if  (error) throw error
-        route.push({name : 'index'})
+        else {
+            router.push({name : '/'})
+        }
     } catch (error) {
         message.value = error.message;
             setTimeout(() => {

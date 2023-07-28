@@ -1,7 +1,7 @@
 <template>
-    <div class="">
+    <div class="h-full ">
         <Nav :isUser="isUser"  :isDown="isDown" />
-        <div class="container mx-auto">
+        <div>
             <slot />
         </div>
         <Uparrow @click="Go_back" :isDown="isDown"/>
@@ -15,7 +15,7 @@ const isDown = ref(false)
 onMounted(() => {
     window.addEventListener("scroll" , (e) =>{
         const scrollHeight = window.pageYOffset;
-        if(scrollHeight > 150){
+        if(scrollHeight > 0){
             isDown.value = true ;
         }
         else {
