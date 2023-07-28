@@ -1,11 +1,11 @@
 <template>
     <div class="container mx-auto my-10">
-        <h3 class=" capitalize text-left text-slate-500 mb-2 font-semibold">shop our top categories</h3>
+        <h3 class=" capitalize text-left text-slate-700 mb-2 font-semibold">shop our top categories</h3>
         <div class=" flex justify-between gap-2 h-[210px] content-center overflow-auto">
             <nuxt-link to="/" v-for=" category in categories" :key="category">
                 <div class="w-[140px] h-[190px]  relative ">
                     <img :src="category.image" alt="" class="w-full h-full object-cover object-center rounded-md ">
-                    <h4 class=" capitalize text-secondColor font-medium text-center text-sm absolute top-2 left-[50%] -translate-x-[50%] ">{{ category.title }}</h4>
+                    <h4 class=" capitalize text-slate-700 font-medium text-center text-sm absolute top-2 left-[50%] -translate-x-[50%] ">{{ category.title }}</h4>
                 </div>
             </nuxt-link>
         </div>

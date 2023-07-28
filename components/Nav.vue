@@ -1,55 +1,7 @@
 <template>
   <div class=" w-full h-fit">
-    <!-- info section  -->
-    <div class="bg-mainColor w-full h-6  flex justify-between content-center relative top-0 left-0">
-      <!-- phone number  -->
-      <div v-if="!props.isUser" class="flex ml-8 content-center w-fit cursor-pointer ">
-        <Icon class="my-auto ml-1" name="material-symbols:phone-in-talk" size="20" color="white" />
-        <h5 class="text-[12px] my-auto text-white font-thin ">+213792579563</h5>
-      </div>
-      <!-- promotion  -->
-      <div>
-        <h5 class="text-white capitalize text-sm mt-[2px]"> get 50% off on selected items | <nuxt-link to="/"
-            class=" underline ml-2"> shop now</nuxt-link></h5>
-      </div>
-      <!-- language and dark mode  -->
-      <div class=" flex justify-between content-center ">
-        <!-- language -->
-        <div class=" z-50 mt-1 w-fit text-[15px]">
-          <h5 class="flex text-white  text-[12px]">{{ currentLang }}
-            <Icon @click="isLang = !isLang" class="my-auto cursor-pointer duration-500"
-              :class="isLang ? 'rotate-180' : ''" name="material-symbols:keyboard-arrow-down" size="25" color="white" />
-          </h5>
-          <transition name="fade">
-            <ul v-auto-animate v-if="isLang" class="z-50 shadow-2xl bg-white w-full h-fit duration-700 mt-0">
-              <li @click="chooseLang(index)" v-for="(lang, index ) in language" :key="index"
-                class="text-center overflow-hidden text-black border-teal-500 cursor-pointer border-b shadow-sm">{{ lang
-                }}</li>
-            </ul>
-          </transition>
-        </div>
-        <!-- toggle dark mode -->
-        <div class=" w-12 my-auto mx-2 mr-8">
-          <div class="my-auto h-5 bg-thirdColor rounded-xl relative">
-
-            <transition name="FromDarkToWhite">
-              <Icon @click="toggleDark()" v-if="isDark"
-                class="cursor-pointer absolute top-[2px]  right-[3px] bg-secondColor rounded-xl"
-                name="solar:cloudy-moon-broken" size="21" color="black" />
-            </transition>
-            <transition name="FromWhiteToDark">
-              <Icon @click="toggleDark()" v-if="!isDark"
-                class="cursor-pointer absolute top-[2px] left-0.5 bg-secondColor rounded-xl" name="circum:sun" size="21"
-                color="black" />
-            </transition>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- nav section   -->
-    <div :class=" props.isDown ? 'top-0 fixed  bg-transparent backdrop-blur-lg drop-shadow-md': ''" class="z-50 flex relative top-[0px] justify-between bg-white content-center w-full h-11 duration-500  dark:bg-black shadow-lg">
+    <div :class=" props.isDown ? 'top-0   bg-transparent backdrop-blur-lg drop-shadow-md': ''" class="z-50 flex sticky  justify-between bg-white content-center w-full h-11 duration-500  dark:bg-black shadow-lg">
       <div class="container mx-auto mt-0 flex justify-evenly content-center ">
         <!-- brand and category section  -->
         <div class="flex justify-between content-center h-full ">
@@ -101,7 +53,7 @@
           <div class="h-full w-[200px] flex justify-around content-center drop-shadow-sm">
             <!-- account -->
             <div class="relative self-center ">
-              <div class="flex justify-evenly cursor-pointer hover:border-thirdColor border-2 content-center my-auto hover:bg-greyColor duration-300 h-6  w-[90px] rounded-2xl " @click="isProfile = !isProfile">
+              <div class="flex justify-evenly cursor-pointer hover:border-thirdColor border-transparent border-2 my-auto hover:bg-greyColor duration-300 h-6  w-[90px] rounded-2xl " @click="isProfile = !isProfile">
               <Icon class="my-auto" name="ic:baseline-person-outline" size="25" color="grey"/>
                 <h3 class="text-center my-auto text-[15px]" >Account</h3>
             </div>
@@ -139,10 +91,10 @@
                 </div>
               </div>
             </div>
-            <div class="relative flex justify-evenly cursor-pointer hover:border-thirdColor border-2 content-center my-auto hover:bg-greyColor duration-300 h-6 w-[80px] rounded-2xl ">
+            <div class="relative flex justify-evenly cursor-pointer hover:border-thirdColor border-2 border-transparent content-center my-auto hover:bg-greyColor duration-300 h-6 w-[80px] rounded-2xl ">
               <Icon class="my-auto" name="ph:shopping-cart-simple-bold" size="25" color="grey"/>
                 <h3 class="text-center text-sm" >Cart</h3>
-              <span class="w-[15px] rounded-full text-[8px] border-2 border-transparent text-white text-center h-[15px] bg-mainColor absolute top-[-7px] right-[-2.5px]" >20</span>
+              <span class="w-[13px] rounded-full text-[8px] border-2 border-transparent text-white text-center h-[14px] bg-mainColor absolute top-[2px] left-[13px]" >20</span>
             </div>
           </div>
         </div>
@@ -157,12 +109,7 @@ import { useDark, useToggle } from '@vueuse/core'
 
 
 // deceleration 
-const isLang = ref(false);
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
-const language: string[] = ["Arb", "Eng", "Esp"];
 const categories: string[] = ["digital services", "cosmetics and body care", "food and beverage", "furniture and decor", "health and wellness", "household items", "media", "pet care", "office equipment"]
-const currentLang = ref("Eng");
 const isCategory = ref(false)
 const isSearching = ref(false);
 const isProfile = ref(false);
@@ -174,9 +121,6 @@ interface Props {
 const props = defineProps<Props>()
   console.log(props.isUser , props.isDown);
 // functions
-const chooseLang = (index: number) => {
-  currentLang.value = language[index]
-}
 watch(isSearching, () => {
   console.log(isSearching.value);
 
@@ -185,37 +129,6 @@ watch(isSearching, () => {
 </script>
 
 <style scoped>
-
-
-.FromDarkToWhite-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.FromDarkToWhite-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.FromDarkToWhite-enter-from,
-.FromDarkToWhite-leave-to {
-  transform: translateX(-40px);
-  opacity: 0;
-}
-
-
-.FromWhiteToDark-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.FromWhiteToDark-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.FromWhiteToDark-enter-from,
-.FromWhiteToDark-leave-to {
-  transform: translateX(40px);
-  opacity: 0;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease-in-out;

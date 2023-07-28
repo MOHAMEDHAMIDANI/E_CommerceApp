@@ -20,3 +20,21 @@
               </transition>
             </div>
           </div> -->
+
+
+
+
+          <!-- language -->
+        <!-- <div class=" z-50 mt-1 w-fit text-[15px]">
+          <h5 class="flex text-white  text-[12px]">{{ currentLang }}
+            <Icon @click="isLang = !isLang" class="my-auto cursor-pointer duration-500"
+              :class="isLang ? 'rotate-180' : ''" name="material-symbols:keyboard-arrow-down" size="25" color="white" />
+          </h5>
+          <transition name="fade">
+            <ul v-auto-animate v-if="isLang" class="z-50 absolute shadow-2xl bg-white w-full h-fit duration-700 mt-0">
+              <li @click="chooseLang(index)" v-for="(lang, index ) in language" :key="index"
+                class="text-center   text-black border-teal-500 cursor-pointer border-b shadow-sm">{{ lang
+                }}</li>
+            </ul>
+          </transition>
+        </div> -->

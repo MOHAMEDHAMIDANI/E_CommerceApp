@@ -1,15 +1,20 @@
 <template>
-    <div class="w-[160px] h-[180px] border-r-2 border-l-2 border-greyColor mb-2 bg-blue-500 flex justify-between content-center">
-        <Icon /> 
-        <h3></h3>
-        <img src="" alt="">
+    <div class="w-[300px]">
+        <h3 class="text-slate-900 capitalize font-bold ml-2 text-sm">{{ title }} </h3>
+        <ul class="mt-3">
+            <li v-for="(title, index) in titles" :key="index" class=" text-slate-700 hover:underline "><nuxt-link to="/">
+                    <p class="w-full font-medium break-words text-sm mt-1 px-3 ">{{ title }} </p>
+                </nuxt-link></li>
+        </ul>
     </div>
 </template>
 
 <script setup lang="ts">
-
+interface Props {
+    title: string,
+    titles: string[],
+}
+const props = defineProps<Props>()
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
