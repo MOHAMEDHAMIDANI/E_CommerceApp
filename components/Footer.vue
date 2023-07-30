@@ -4,7 +4,7 @@
     <div class="w-full flex flex-wrap justify-center content-center ">
       <site-item v-for="(item , index) in items " :key="index" :title="item.title" :description="item.description" :icon="item.icon" />
     </div>
-
+    
     <!-- footer stuff  -->
     <div class="flex flex-wrap justify-center content-center mt-10 xl:gap-15 lg:gap-10 md:gap-5">
       <footer-item v-for="(footeritem , index) in footerItems" :key="index" :title="footeritem.title" :titles="footeritem.titles"  />

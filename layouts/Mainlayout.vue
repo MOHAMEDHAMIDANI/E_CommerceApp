@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-const isUser = ref(false)
+const isUser = ref(true)
 const isDown = ref(false)
 onMounted(() => {
     window.addEventListener("scroll" , (e) =>{

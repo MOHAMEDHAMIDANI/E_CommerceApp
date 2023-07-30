@@ -6,9 +6,9 @@
         <!-- brand and category section  -->
         <div class="flex justify-between content-center h-full ">
           <!-- brand  -->
-          <div class=" w-[130px] flex justify-between content-center">
-            <img class="w-10" src="../assets/images/images-removebg-preview (1).png" alt="">
-            <h3 class="text-mainColor text-[15px] my-auto font-medium ">Mr.Shopping</h3>
+          <div class=" w-[130px] flex justify-between content-center relative">
+            <img class="w-10  object-cover  object-center" src="../assets/images/images-removebg-preview (1).png" alt="">
+            <h3 class="text-mainColor text-[15px] my-auto font-medium">Mr.Shopping</h3>
           </div>
         </div>
         <!-- other side of the nav -->
@@ -27,7 +27,7 @@
             </nuxt-link>
           </div>
           <!-- search -->
-          <div class="relative" v-if="!isUser">
+          <div class="relative" v-if="isUser">
             <form action="search" class="relative mt-2.5 mb-4  md:w-[310px] 2xl:w-[500px]">
               <Icon name="ph:magnifying-glass-bold" size="25" color="#04C988"
                 class=" absolute top-0.5 right-1 cursor-pointer" />
@@ -59,31 +59,31 @@
             </div>
               <!-- stuff container  -->
               <div v-if="isProfile" v-motion-slide-top class="absolute top-10 -left-5 ">
-                <div class="w-[150px] max-h-[200px] flex flex-col justify-evenly content-center  shadow  bg-white bg-opacity-80 rounded " >
+                <div class="w-[150px] max-h-[200px] flex flex-col justify-evenly content-center  shadow  bg-white bg-opacity-60" >
                   <!-- profile  -->
                   <nuxt-link to="" v-if="isUser">
-                    <div class="h-[50px]  flex justify-evenly hover:bg-greyColor content-center duration-700 cursor-pointer border-b-2 border-secondColor rounded">
+                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor ">
                     <Icon name="material-symbols:person-pin-outline" size="25" class="my-auto"/>
                       <h3 class=" capitalize text-center text-black my-auto"> profile</h3>
                     </div>
                   </nuxt-link>
                   <!-- settings  -->
                   <nuxt-link to="" v-if="isUser">
-                    <div class="h-[50px]  flex justify-evenly hover:bg-greyColor content-center duration-700 cursor-pointer border-b-2 border-secondColor rounded">
+                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor ">
                     <Icon name="material-symbols:settings-account-box" size="25" class="my-auto"/>
                       <h3 class=" capitalize text-center text-black my-auto"> settings</h3>
                     </div>
                   </nuxt-link>
                   <!-- login / register  -->
                   <nuxt-link to="/Register-Login" >
-                    <div class="h-[50px]  flex justify-evenly hover:bg-greyColor content-center duration-700 cursor-pointer border-b-2 border-secondColor rounded">
+                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor">
                     <Icon name="ic:baseline-log-in" size="25" class="my-2" color="#04C988"/>
                       <h3 class=" capitalize text-center  mt-1.5 text-thirdColor"> register</h3>
                     </div>
                   </nuxt-link>
                   <!-- sign out  -->
                   <nuxt-link to="" v-if="isUser" >
-                    <div class="h-[50px]  flex justify-evenly hover:bg-greyColor content-center duration-700 cursor-pointer border-b-2 border-secondColor v">
+                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor">
                     <Icon name="streamline:interface-login-circle-arrow-enter-left-login-point-circle" size="25" class="my-2" color="rgb(153 27 27)"/>
                       <h3 class=" capitalize text-center  mt-1.5 text-red-800"> logout</h3>
                     </div>

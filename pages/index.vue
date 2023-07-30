@@ -4,6 +4,8 @@
     <Mainlayout>
       <Hero />
       <category />
+      <Section >
+      </Section>
     </Mainlayout>
   </div>
 </template>

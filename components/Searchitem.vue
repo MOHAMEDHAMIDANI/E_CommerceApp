@@ -7,19 +7,15 @@
                     <img class="w-full h-full object-cover object-center" src="../assets/images/44065370b_1000x500.webp" alt="">
                 </div>
                 <div class="text-black text-sm ml-5 md:ml-1  max-w-[200px] text-center my-auto">
-                    <h2 class="max-w-[150px] text-[15px] font-normal text-mainColor capitalize">product name   </h2>
+                    <h2 class="w-[90px] overflow-hidden text-[14px] font-normal text-mainColor capitalize ">product name   </h2>
                 </div>
             </div>
             <div class="flex justify-between self-center">
-                <Icon name="ph:star-fill" size="10" class="text-thirdColor cursor-pointer self-center" />
-                <Icon name="ph:star-fill" size="10" class="text-thirdColor cursor-pointer self-center" />
-                <Icon name="ph:star-fill" size="10" class="text-thirdColor cursor-pointer self-center" />
-                <Icon name="ph:star-fill" size="10" class="text-thirdColor cursor-pointer self-center" />
-                <Icon name="ph:star-fill" size="10" class="text-thirdColor cursor-pointer self-center" />
+                <Rating />
                 <span class="text-center text-[10px] self-center">(30)</span>
             </div>
             <div class="flex self-center">
-                <h3  class="text-sm text-mainColor font-medium">89.99$</h3>
+                <h3  class="text-[13px] text-mainColor font-medium">89.99$</h3>
             </div>
         </div>
     </nuxt-link>

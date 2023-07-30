@@ -1,6 +1,6 @@
 <template>
     <Mainlayout>
-        <div class=" w-full mt-9  h-[700px] flex justify-center content-center drop-shadow-lg">
+        <div class=" w-full my-9  h-[700px] flex justify-center content-center drop-shadow-lg">
             <!-- login and some infos -->
             <div class="max-w-[500px] w-[500px] min-w-[300px]  h-full">
                 <div class="w-full h-full bg-gray-100 flex justify-evenly flex-col content-center shadow-xl rounded-md ">
