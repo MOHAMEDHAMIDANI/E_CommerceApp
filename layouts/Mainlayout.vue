@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full ">
+    <div class="h-full">
         <TopInfo />
         <Nav :isUser="isUser"  :isDown="isDown" />
         <div>

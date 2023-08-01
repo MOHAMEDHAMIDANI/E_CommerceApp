@@ -1,15 +1,15 @@
 <template>
   <div class=" w-full h-fit">
     <!-- nav section   -->
-    <div :class=" props.isDown ? 'top-0   bg-transparent backdrop-blur-lg drop-shadow-md': ''" class="z-50 flex sticky  justify-between bg-white content-center w-full h-11 duration-500  dark:bg-black shadow-lg">
+    <div :class=" props.isDown ? 'top-0   bg-transparent backdrop-blur-lg drop-shadow-sm': ''" class="z-50 flex sticky  justify-between bg-white content-center w-full h-11 duration-500  dark:bg-black shadow-lg">
       <div class="container mx-auto mt-0 flex justify-evenly content-center ">
         <!-- brand and category section  -->
         <div class="flex justify-between content-center h-full ">
           <!-- brand  -->
-          <div class=" w-[130px] flex justify-between content-center relative">
-            <img class="w-10  object-cover  object-center" src="../assets/images/images-removebg-preview (1).png" alt="">
-            <h3 class="text-mainColor text-[15px] my-auto font-medium">Mr.Shopping</h3>
-          </div>
+            <nuxt-link to="/" class=" w-[130px] flex justify-between content-center relative">
+              <img class="w-10  object-cover  object-center" src="../assets/images/images-removebg-preview (1).png" alt="">
+              <h3 class="text-mainColor text-[15px] my-auto font-medium">Mr.Shopping</h3>
+            </nuxt-link>
         </div>
         <!-- other side of the nav -->
         <div class="flex h-full w-full justify-between content-center">
@@ -59,31 +59,31 @@
             </div>
               <!-- stuff container  -->
               <div v-if="isProfile" v-motion-slide-top class="absolute top-10 -left-5 ">
-                <div class="w-[150px] max-h-[200px] flex flex-col justify-evenly content-center  shadow  bg-white bg-opacity-60" >
+                <div class="w-[150px] max-h-[200px] flex flex-col justify-evenly content-center  shadow  bg-white bg-opacity-90" >
                   <!-- profile  -->
                   <nuxt-link to="" v-if="isUser">
-                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor ">
+                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor  ">
                     <Icon name="material-symbols:person-pin-outline" size="25" class="my-auto"/>
                       <h3 class=" capitalize text-center text-black my-auto"> profile</h3>
                     </div>
                   </nuxt-link>
                   <!-- settings  -->
                   <nuxt-link to="" v-if="isUser">
-                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor ">
+                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor  ">
                     <Icon name="material-symbols:settings-account-box" size="25" class="my-auto"/>
                       <h3 class=" capitalize text-center text-black my-auto"> settings</h3>
                     </div>
                   </nuxt-link>
                   <!-- login / register  -->
                   <nuxt-link to="/Register-Login" >
-                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor">
+                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor ">
                     <Icon name="ic:baseline-log-in" size="25" class="my-2" color="#04C988"/>
                       <h3 class=" capitalize text-center  mt-1.5 text-thirdColor"> register</h3>
                     </div>
                   </nuxt-link>
                   <!-- sign out  -->
                   <nuxt-link to="" v-if="isUser" >
-                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor">
+                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor ">
                     <Icon name="streamline:interface-login-circle-arrow-enter-left-login-point-circle" size="25" class="my-2" color="rgb(153 27 27)"/>
                       <h3 class=" capitalize text-center  mt-1.5 text-red-800"> logout</h3>
                     </div>
