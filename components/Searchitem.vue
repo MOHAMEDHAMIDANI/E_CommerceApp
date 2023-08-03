@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="flex justify-between self-center">
-                <Rating />
+                <DisplayRating />
                 <span class="text-center text-[10px] self-center">(30)</span>
             </div>
             <div class="flex self-center">

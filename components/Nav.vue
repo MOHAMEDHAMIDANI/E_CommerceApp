@@ -35,7 +35,7 @@
                 class="text-sm h-6 w-full  bg-greyColor pl-2 outline-thirdColor rounded-xl ">
             </form>
             <!-- searched items  -->
-            <div @mouseleave="isSearching = false" v-motion-left v-if="isSearching" class="drop-shadow-lg relative rounded-sm max-h-[300px] overflow-y-auto duration-1000">
+            <div @mouseleave="isSearching = false" v-if="isSearching" class="drop-shadow-lg relative rounded-sm max-h-[300px] overflow-y-auto duration-1000">
               <searchitem v-motion-pop />
               <searchitem v-motion-pop />
               <searchitem v-motion-pop />
@@ -119,7 +119,6 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-  console.log(props.isUser , props.isDown);
 // functions
 watch(isSearching, () => {
   console.log(isSearching.value);

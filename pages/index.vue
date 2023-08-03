@@ -4,12 +4,20 @@
       <Hero />
       <category />
       <Section >
+        <Carousel >
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+        </Carousel>
       </Section>
-      <cursole class="container mx-auto mt-5 ">
-        <Item />
-        <Item />
-        <Item />
-      </cursole>
     </Mainlayout>
 </template>
 
