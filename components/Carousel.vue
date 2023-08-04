@@ -15,23 +15,38 @@
 <script setup lang="ts">
 onMounted(() => {
     const slider = <HTMLElement>document.getElementById('slider');
-        slider.scrollLeft = 0;
-    const ElementNum = slider.childElementCount ; 
-    const totaleWidth = slider.scrollWidth; 
-    console.log(slider.clientWidth)
-    console.log(slider.scrollWidth)
-    console.log(slider.scrollLeft)
-
+    slider.scrollLeft = 0;
+    
+    const AutoScroll =() => {
+        if(slider.scrollLeft <= (slider.scrollWidth - slider.clientWidth) && slider.scrollLeft >= 0) {
+            slider.scrollLeft += (slider.scrollWidth / slider.childElementCount);
+        }
+        else if(slider.scrollLeft == (slider.scrollWidth - slider.clientWidth)) {
+            slider.scrollLeft = 0;
+        }else if(slider.scrollLeft == 0) {
+        slider.scrollLeft = slider.scrollWidth;
+        
+    }
+}
+setInterval(AutoScroll , 5000)
 })
 
-
 const MoveToTheLeft = () => {
-    slider.scrollLeft -= 300;
+    if(slider.scrollLeft = 0) {
+    slider.scrollLeft = slider.scrollWidth;
+    }else {
+        slider.scrollLeft -= (slider.scrollWidth / slider.childElementCount);
+    }
 
 }
 const MoveToTheRight = () => {
-    slider.scrollLeft += 300;
+    if(slider.scrollLeft == (slider.scrollWidth - slider.clientWidth)) {
+        slider.scrollLeft = 0;
+    }else {
+        slider.scrollLeft += (slider.scrollWidth / slider.childElementCount);
+    }
 }
+
 </script>
 
 <style scoped>

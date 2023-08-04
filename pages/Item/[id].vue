@@ -71,17 +71,25 @@
                 </div>
             </div>
             <!-- comment section will add later on  -->
-            <div class="container mx-auto h-52 mt-4 bg-red-700">
-                <div class="w-full h-36 p-1 bg-blue-400">
-                    <h3 class="capitalize text-slate-900 font-semibold text-center ">please give us your honest preview</h3>
-                    <input v-motion-slide-right type="email" required
-                                class="duration-200  mx-auto h-8 w-[290px] caret-thirdColor bg-greyColor shadow-inner  pl-2 rounded outline-thirdColor "
-                                placeholder=" Your Email" v-model="description">
-                    <Rating />
-                    <Btn />
+            <div class="container mx-auto mt-4 ">
+                <div class="w-full p-1 flex  flex-col justify-between content-center">
+                    <h3 class="capitalize text-slate-600 font-semibold  text-lg w-fit">please give us your honest preview</h3>
+                    <textarea name="" id="" cols="30" rows="1" class=" h-20 p-1 w-[400px] my-2 rounded-md resize-none outline-none border-2 border-thirdColor" placeholder="what do you think ?"></textarea>
+                    <Rating :width="'150px'" class="mb-2"/>
+                    <Btn :secondText="'submit'" />
                 </div>  
-                <div>
-
+                <div class="flex flex-col content-center mt-3">
+                    <h3 class="capitalize text-slate-600 font-semibold  text-lg w-fit my-2">other people preview</h3>
+                    <div v-for="(comment , index) in comments" :key="index" class="my-1 p-2 border-2 border-mainColor rounded-md">
+                        <div  class="flex justify-between content-center w-32 mb-2">
+                            <div class="w-10 h-10 object-cover object-center rounded-full flex justify-between content-center">
+                                <img src="../../assets/images/unnamed.jpg" alt="" class="relative w-full h-full rounded-full">
+                            </div>
+                            <h3 class="text-md font-semibold capitalize my-auto">anonymous</h3>
+                        </div>
+                        <p class="mx-2 text-sm font-medium text-slate-600">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime quo aliquam, doloribus reiciendis, quis quisquam recusandae temporibus facilis commodi nobis possimus excepturi veniam modi explicabo, autem suscipit magnam atque eaque.</p>
+                        <DisplayRating class="mx-2" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,7 +109,7 @@ const currentImg = ref(images[0]);
 const numOfItem = ref(1);
 const amount = ref(12);
 const colors: string[] = ['bg-red-400', 'bg-slate-700', 'bg-blue-700', 'bg-gray-200 ', 'bg-emerald-500'];
-const commetns: comment[] = [{
+const comments: comment[] = [{
     author: '',
     description: '',
     ratingNum: 4,
@@ -131,5 +139,5 @@ const commetns: comment[] = [{
     ratingNum: 4,
     time: '',},];
 </script>
-
+~
 <style scoped></style>
