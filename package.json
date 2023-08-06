@@ -8,7 +8,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
-  "prosma": {
+  "prisma": {
     "seed": "node prisma/seed.js"
   },
   "devDependencies": {

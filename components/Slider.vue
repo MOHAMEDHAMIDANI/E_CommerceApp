@@ -1,5 +1,5 @@
 <template>
-    <div  class="flex overflow-auto  py-1 gap-2">
+    <div  class="flex overflow-auto scroll-smooth py-1 gap-2">
         <slot />
     </div>
 </template>

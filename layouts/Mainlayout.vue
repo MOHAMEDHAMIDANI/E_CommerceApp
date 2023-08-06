@@ -16,7 +16,7 @@ const isDown = ref(false)
 onMounted(() => {
     window.addEventListener("scroll" , (e) =>{
         const scrollHeight = window.pageYOffset;
-        if(scrollHeight > 0){
+        if(scrollHeight > 200){
             isDown.value = true ;
         }
         else {

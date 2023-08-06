@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Addresses {
+  id         Int       @id @default(autoincrement())
+  userId     String    @unique @db.Uuid
+  name       String
+  address    String
+  zipcode    String
+  city       String
+  country    String
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+}
+
+model Orders {
+  id         Int         @id @default(autoincrement())
+  userId     String      @db.Uuid
+  stripeId   String
+  name       String
+  address    String
+  zipcode    String
+  city       String
+  country    String
+  created_at DateTime?   @default(now()) @db.Timestamptz(6)
+  orderItem  OrderItem[]
+}
+
+model OrderItem {
+  id         Int       @id @default(autoincrement())
+  orderId    Int
+  productId  Int
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  order      Orders    @relation(fields: [orderId], references: [id])
+  product    Products  @relation(fields: [productId], references: [id])
+}
+
+model Products {
+  id          Int         @id @default(autoincrement())
+  title       String
+  description String
+  isfav Boolean?
+  isInCart Boolean?
+  cuantity Int
+  category String
+  url         String[]
+  price       Int
+  rating      Int
+  created_at  DateTime?   @default(now()) @db.Timestamptz(6)
+  orderItem   OrderItem[]
+  comments    comment[]
+}
+
+model comment {
+  id          Int       @id @default(autoincrement())
+  commentId   Int
+  username    String
+  description String
+  rating      Int
+  Products    Products? @relation(fields: [productsId], references: [id])
+  productsId  Int?
+}

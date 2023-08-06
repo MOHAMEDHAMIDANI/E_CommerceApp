@@ -1,7 +1,7 @@
 <template>
   <div class=" w-full h-fit">
     <!-- nav section   -->
-    <div :class=" props.isDown ? 'top-0   bg-transparent backdrop-blur-lg drop-shadow-sm': ''" class="z-50 flex sticky  justify-between bg-white content-center w-full h-11 duration-500  dark:bg-black shadow-lg">
+    <div :class=" props.isDown ? 'top-0 fixed bg-transparent  backdrop-blur-lg drop-shadow-sm': ''" class="z-50 flex justify-between ease-in-out content-center w-full h-11 duration-500  shadow-lg">
       <div class="container mx-auto mt-0 flex justify-evenly content-center ">
         <!-- brand and category section  -->
         <div class="flex justify-between content-center h-full ">
