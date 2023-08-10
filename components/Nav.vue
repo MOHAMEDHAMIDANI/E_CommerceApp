@@ -1,7 +1,7 @@
 <template>
   <div class=" w-full h-fit">
     <!-- nav section   -->
-    <div :class=" props.isDown ? 'top-0 fixed bg-transparent  backdrop-blur-lg drop-shadow-sm': ''" class="z-50 flex justify-between ease-in-out content-center w-full h-11 duration-500  shadow-lg">
+    <div :class=" props.isDown ? 'top-0 fixed bg-transparent backdrop-blur-lg drop-shadow-sm': 'relative bg-white '" class="z-50 flex justify-between ease-in-out content-center w-full h-11 duration-500  shadow-lg">
       <div class="container mx-auto mt-0 flex justify-evenly content-center ">
         <!-- brand and category section  -->
         <div class="flex justify-between content-center h-full ">
@@ -12,7 +12,7 @@
             </nuxt-link>
         </div>
         <!-- other side of the nav -->
-        <div class="flex h-full w-full justify-between content-center">
+        <div class="flex h-full w-full justify-evenly content-center">
           <!-- pages  -->
 
           <div class="flex justify-evenly content-center w-40 h-full ml-3 ">
@@ -27,15 +27,15 @@
             </nuxt-link>
           </div>
           <!-- search -->
-          <div class="relative" v-if="isUser">
+          <div class="mx-auto" v-if="isUser">
             <form action="search" class="relative mt-2.5 mb-4  md:w-[310px] 2xl:w-[500px]">
               <Icon name="ph:magnifying-glass-bold" size="25" color="#04C988"
                 class=" absolute top-0.5 right-1 cursor-pointer" />
               <input @click="isSearching = true" placeholder="Search for product" type="text"
-                class="text-sm h-6 w-full  bg-greyColor pl-2 outline-thirdColor rounded-xl ">
+                class="text-sm h-6 w-full  bg-greyColor pl-2 outline-thirdColor rounded-xl">
             </form>
             <!-- searched items  -->
-            <div @mouseleave="isSearching = false" v-if="isSearching" class="drop-shadow-lg relative rounded-sm max-h-[300px] overflow-y-auto duration-1000">
+            <div @mouseleave="isSearching = false" v-if="isSearching" id="search" class="drop-shadow-lg  rounded-sm max-h-[300px] overflow-y-auto duration-1000">
               <searchitem v-motion-pop />
               <searchitem v-motion-pop />
               <searchitem v-motion-pop />
@@ -105,12 +105,9 @@
 
 <script setup lang="ts">
 //importing stuff 
-import { useDark, useToggle } from '@vueuse/core'
-
 
 // deceleration 
-const categories: string[] = ["digital services", "cosmetics and body care", "food and beverage", "furniture and decor", "health and wellness", "household items", "media", "pet care", "office equipment"]
-const isCategory = ref(false)
+
 const isSearching = ref(false);
 const isProfile = ref(false);
 interface Props {
@@ -136,5 +133,8 @@ watch(isSearching, () => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+#search::-webkit-scrollbar {
+    display: none;
 }
 </style>

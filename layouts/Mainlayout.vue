@@ -1,8 +1,8 @@
 <template>
-    <div class="h-full">
+    <div class="min-h-[100vh]">
         <TopInfo />
         <Nav :isUser="isUser"  :isDown="isDown" />
-        <div>
+        <div class="relative">
             <slot />
         </div>
         <Uparrow @click="Go_back" :isDown="isDown"/>
@@ -30,6 +30,7 @@ const Go_back = () =>(
         left : 0 ,
     })
 )
+
 </script>
 
 <style scoped>

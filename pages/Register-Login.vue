@@ -20,7 +20,7 @@
                             <input v-motion-slide-right type="password" required
                                 class="duration-300  mx-auto  h-8 w-[290px] caret-thirdColor bg-greyColor shadow-inner  pl-2 rounded outline-thirdColor "
                                 placeholder="Your Password" v-model="RegisterPassword">
-                            <input v-motion-slide-right type="password" required
+                            <input v-motion-slide-right type="password" required 
                                 class="duration-500  mx-auto  h-8 w-[290px] caret-thirdColor bg-greyColor shadow-inner  pl-2 rounded outline-thirdColor "
                                 placeholder=" Confirm Your Password" v-model="RegisterPasswordConfirmation">
                             <button v-motion-slide-right type="submit" @click.prevent="signUp"

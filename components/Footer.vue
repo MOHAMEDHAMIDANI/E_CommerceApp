@@ -1,5 +1,5 @@
 <template>
-  <div class=" bg-gray-100 pb-5">
+  <div class=" bg-gray-100 pb-5 relative bottom-0">
     <!-- footer items  -->
     <div class="w-full flex flex-wrap justify-center content-center ">
       <site-item v-for="(item , index) in items " :key="index" :title="item.title" :description="item.description" :icon="item.icon" />

@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="w-full flex gap-1 mt-5 ">
-                            <nuxt-link :to="{ name: 'index' }">
+                            <nuxt-link :to="{name : 'Checkout-id' , params : {id : 44}}">
                                 <Btn :condition="true" :Text="'buy now'" class="w-[180px] h-8 text-md" />
                             </nuxt-link>
                             <Btn :condition="false" :Text="'added to cart'" :secondText="'add to cart'"
@@ -70,13 +70,28 @@
                     </div>
                 </div>
             </div>
+            <Section :name="'similar items you might like'" >
+        <Carousel >
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+        </Carousel>
+        </Section>
             <!-- comment section will add later on  -->
             <div class="container mx-auto mt-4 ">
-                <div class="w-full p-1 flex  flex-col justify-between content-center">
+                <div class="w-fit p-1 flex  flex-col justify-between content-center">
                     <h3 class="capitalize text-slate-600 font-semibold  text-lg w-fit">please give us your honest preview</h3>
                     <textarea name="" id="" cols="30" rows="1" class=" h-20 p-1 w-[400px] my-2 rounded-md resize-none outline-none border-2 border-thirdColor" placeholder="what do you think ?"></textarea>
                     <Rating :width="'150px'" class="mb-2"/>
-                    <Btn :secondText="'submit'" />
+                        <Btn :secondText="'submit'" />
                 </div>  
                 <div class="flex flex-col content-center mt-3">
                     <h3 class="capitalize text-slate-600 font-semibold  text-lg w-fit my-2">other people preview</h3>

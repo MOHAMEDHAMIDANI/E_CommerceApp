@@ -1,5 +1,5 @@
 <template>
-    <nuxt-link to="">
+    <nuxt-link :to="{name : 'search-value' , params : {value : 'value'}}">
         <div
             class="flex justify-between content-center bg-white shadow-lg rounded-sm h-12 lg:w-[400px] xl:w-[500px] md:w-[300px] hover:bg-slate-200 duration-500 cursor-pointer border-b-2">
             <div class="flex justify-center content-center">
