@@ -14,15 +14,14 @@
         <!-- other side of the nav -->
         <div class="flex h-full w-full justify-evenly content-center">
           <!-- pages  -->
-
-          <div class="flex justify-evenly content-center w-40 h-full ml-3 ">
-            <nuxt-link class="self-center" to="/">
+          <div class=" justify-evenly content-center w-40 h-full ml-3 lg:flex md:hidden">
+            <a class="self-center" href="#deals">
               <h4 class=" capitalize text-center  text-[12px] text-slate-400 "> deals</h4>
-            </nuxt-link>
-            <nuxt-link class="self-center" to="/">
+            </a>
+            <a class="self-center" href="#new">
               <h4 class=" capitalize text-center text-[12px] text-slate-400 "> what's new</h4>
-            </nuxt-link>
-            <nuxt-link class="self-center" to="/">
+            </a>
+            <nuxt-link class="self-center" :to="{name : 'Delivery'}">
               <h4 class=" capitalize text-center text-[12px] text-slate-400 "> delivery</h4>
             </nuxt-link>
           </div>
@@ -67,13 +66,13 @@
                       <h3 class=" capitalize text-center text-black my-auto"> profile</h3>
                     </div>
                   </nuxt-link>
-                  <!-- settings  -->
+                  <!-- settings 
                   <nuxt-link to="" v-if="isUser">
                     <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor  ">
                     <Icon name="material-symbols:settings-account-box" size="25" class="my-auto"/>
                       <h3 class=" capitalize text-center text-black my-auto"> settings</h3>
                     </div>
-                  </nuxt-link>
+                  </nuxt-link> -->
                   <!-- login / register  -->
                   <nuxt-link to="/Register-Login" >
                     <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor ">
@@ -91,11 +90,13 @@
                 </div>
               </div>
             </div>
-            <div class="relative flex justify-evenly cursor-pointer hover:border-thirdColor border-2 border-transparent content-center my-auto hover:bg-greyColor duration-300 h-6 w-[80px] rounded-2xl ">
-              <Icon class="my-auto" name="ph:shopping-cart-simple-bold" size="25" color="grey"/>
-                <h3 class="text-center text-sm" >Cart</h3>
-              <span class="w-[13px] rounded-full text-[8px] border-2 border-transparent text-white text-center h-[14px] bg-mainColor absolute top-[2px] left-[13px]" >20</span>
-            </div>
+            <nuxt-link :to="{name : 'Cart'}" class="my-auto">
+              <div class="relative flex justify-evenly cursor-pointer hover:border-thirdColor border-2 border-transparent content-center my-auto hover:bg-greyColor duration-300 h-6 w-[80px] rounded-2xl ">
+                <Icon class="my-auto" name="ph:shopping-cart-simple-bold" size="25" color="grey"/>
+                  <h3 class="text-center text-sm" >Cart</h3>
+                <span class="w-[13px] rounded-full text-[8px] border-2 border-transparent text-white text-center h-[14px] bg-mainColor absolute top-[2px] left-[13px]" >20</span>
+              </div>
+            </nuxt-link>
           </div>
         </div>
       </div>
