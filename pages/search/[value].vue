@@ -9,7 +9,7 @@
                             <h3 class="text-slate-600 font-medium capitalize  ml-1 text-center text-[15px] my-auto">price</h3>
                             <Icon name="material-symbols:keyboard-arrow-down-rounded" size="25" class="cursor-pointer my-auto" />
                         </div>
-                        <div v-show="false" v-motion-pop >
+                        <div v-if="isPrice" v-motion-pop >
                             <ul class="absolute bg-white shadow-md rounded top-1 w-full">
                                 <li class="capitalize text-center cursor-pointer duration-700 border-b-2 hover:bg-gray-300 text-sm">min</li>
                                 <li class="capitalize text-center cursor-pointer duration-700 border-b-2 hover:bg-gray-300 text-sm">max</li>
@@ -25,7 +25,7 @@
                             <h3 class="text-slate-600 font-medium capitalize  ml-1 text-center text-[15px] my-auto">review</h3>
                             <Icon name="material-symbols:keyboard-arrow-down-rounded" size="25" class="cursor-pointer my-auto" />
                         </div>
-                        <div v-if="false" v-motion-pop >
+                        <div v-if="isRating" v-motion-pop >
                             <ul  class="absolute bg-white shadow-md rounded top-1 w-full">
                                 <li class="capitalize text-center cursor-pointer duration-700 border-b-2 hover:bg-gray-300 text-sm"> 1<Icon name="ic:twotone-star" color="green" class="mb-1" />-2<Icon name="ic:twotone-star" color="green" class="mb-1" /></li>
                                 <li class="capitalize text-center cursor-pointer duration-700 border-b-2 hover:bg-gray-300 text-sm">2<Icon name="ic:twotone-star" color="green" class="mb-1" />-3<Icon name="ic:twotone-star" color="green" class="mb-1" /></li>
@@ -40,7 +40,7 @@
                             <h3 class="text-slate-600 font-medium capitalize  ml-1 text-center text-[15px] my-auto">color</h3>
                             <Icon name="material-symbols:keyboard-arrow-down-rounded" size="25" class="cursor-pointer my-auto" />
                         </div>
-                        <div v-if="false" v-motion-pop>
+                        <div v-if="isColor" v-motion-pop>
                             <ul  class="absolute bg-white shadow-md rounded top-1 w-full">
                                 <li class="capitalize text-center cursor-pointer duration-700 border-b-2 hover:bg-gray-300 text-sm">black</li>
                                 <li class="capitalize text-center cursor-pointer duration-700 border-b-2 hover:bg-gray-300 text-sm">white</li>
@@ -58,7 +58,7 @@
                             <h3 class="text-slate-600 font-medium capitalize  ml-1 text-[15px] my-auto">sort by</h3>
                             <Icon name="material-symbols:keyboard-arrow-down-rounded" size="25" class="cursor-pointer" />
                         </div>
-                        <div v-if="true" v-motion-pop >
+                        <div v-if="isSort" v-motion-pop >
                             <ul  class="absolute bg-white shadow-md rounded top-1 w-full">
                                 <li class="capitalize text-center cursor-pointer duration-700 border-b-2 hover:bg-gray-300 text-sm">price</li>
                                 <li class="capitalize text-center cursor-pointer duration-700 border-b-2 hover:bg-gray-300 text-sm">review</li>
@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="">
-            <Section name="for you" >
+            <Section :name="'results for : ' + searchValue" >
                 <Item />
             <Item />
             <Item />
@@ -88,6 +88,11 @@
 <script setup lang="ts">
 import Mainlayout from '../../layouts/Mainlayout.vue'
 const searchValue = 'pc gamer'
+const isPrice = ref(false)
+const isColor = ref(false)
+const isRating = ref(false)
+const isSort = ref(false)
+
 </script>
 
 <style scoped>

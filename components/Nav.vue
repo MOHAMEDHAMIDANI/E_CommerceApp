@@ -58,21 +58,29 @@
             </div>
               <!-- stuff container  -->
               <div v-if="isProfile" v-motion-slide-top class="absolute top-10 -left-5 ">
-                <div class="w-[150px] max-h-[200px] flex flex-col justify-evenly content-center  shadow  bg-white bg-opacity-90" >
+                <div class="w-[150px] flex flex-col justify-evenly content-center  shadow  bg-white bg-opacity-90" >
                   <!-- profile  -->
-                  <nuxt-link to="" v-if="isUser">
+                  <nuxt-link :to="{name : 'profile'}" v-if="isUser">
                     <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor  ">
                     <Icon name="material-symbols:person-pin-outline" size="25" class="my-auto"/>
                       <h3 class=" capitalize text-center text-black my-auto"> profile</h3>
                     </div>
                   </nuxt-link>
-                  <!-- settings 
+                  <!-- favorite  -->
+                  <nuxt-link :to="{name : 'favorite'}" v-if="isUser">
+                    <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor  ">
+                    <Icon name="material-symbols:favorite" size="25" class="my-auto"/>
+                      <h3 class=" capitalize text-center text-black my-auto"> favorite</h3>
+                    </div>
+                  </nuxt-link>
+
+                  <!-- settings  -->
                   <nuxt-link to="" v-if="isUser">
                     <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor  ">
                     <Icon name="material-symbols:settings-account-box" size="25" class="my-auto"/>
                       <h3 class=" capitalize text-center text-black my-auto"> settings</h3>
                     </div>
-                  </nuxt-link> -->
+                  </nuxt-link>
                   <!-- login / register  -->
                   <nuxt-link to="/Register-Login" >
                     <div class="h-[50px]  flex justify-evenly hover:bg-gray-200 content-center duration-700 cursor-pointer border-b-2 border-secondColor ">

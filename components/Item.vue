@@ -1,8 +1,8 @@
 <template>
         <div class="w-[230px]  my-auto h-[300px] shadow-md rounded">
-            <div class="w-full h-[180px] bg-slate-500 relative">
+            <div class="w-full h-[180px] relative  ">
                 <nuxt-link :to="{name : 'Item-id' , params : {id : 30}}">
-                    <img src="../assets/images/photo-1588872657578-7efd1f1555ed.avif" alt="" class="  object-fill  object-center w-full h-full">
+                    <img src="../assets/images/photo-1588872657578-7efd1f1555ed.avif" alt="" class="rounded-t  object-fill  object-center w-full h-full">
                 </nuxt-link>
                 <button v-if="IsFav" :onClick="FavToNoFav">
                     <Icon v-motion-pop  name="material-symbols:heart-check-outline" size="30" color="white" class="absolute top-1 right-1 rounded-full w-7 h-7 border-2 pt-1 p-0.5 bg-secondColor cursor-pointer"/>

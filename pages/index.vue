@@ -18,36 +18,6 @@
             <Item />
         </Carousel>
       </Section>
-      <Section :name="'deals you might like'" id="deals" >
-        <Carousel >
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-        </Carousel>
-        </Section>
-        <Section :name="'new products'" id="new" >
-        <Carousel >
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-        </Carousel>
-        </Section>
     </Mainlayout>
 </template>
 

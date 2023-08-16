@@ -2,9 +2,39 @@
     <div class="min-h-[100vh]">
         <TopInfo />
         <Nav :isUser="isUser"  :isDown="isDown" />
-        <div class="relative">
+        <div>
             <slot />
         </div>
+        <Section :name="'deals you might like'" id="deals" >
+        <Carousel >
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+        </Carousel>
+        </Section>
+        <Section :name="'new products'" id="new" >
+        <Carousel  >
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+        </Carousel>
+        </Section>
         <Uparrow @click="Go_back" :isDown="isDown"/>
         <Footer />
     </div>
