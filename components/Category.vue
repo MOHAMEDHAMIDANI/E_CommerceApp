@@ -1,11 +1,11 @@
 <template>
     <div class="container mx-auto my-10">
         <h3 class=" capitalize text-left text-slate-700 mb-2 font-semibold">shop our top categories</h3>
-        <div class=" flex justify-between gap-2 h-[210px] overflow-auto">
-            <nuxt-link :to="{name:'category-name' , params : {name : category.title}}" v-for=" category in categories" :key="category">
-                <div class="w-[120px] h-[190px]  relative ">
-                    <img :src="category.image" alt="" class="absolute object-cover top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] object-center w-full h-full rounded-md ">
-                    <h4 class=" capitalize text-slate-700 font-medium text-center text-sm absolute top-2 left-[50%] -translate-x-[50%] ">{{ category.title }}</h4>
+        <div class=" flex justify-evenly gap-2 h-[230px]">
+            <nuxt-link :to="{name:'category-name' , params : {name : category.title}}" v-for=" category in categories" :key="category" class="my-auto shadow-lg rounded-md">
+                <div class="w-[120px] h-[190px] my-auto  relative hover:scale-110 duration-500">
+                    <img :src="category.image" alt="" class="absolute object-cover  object-center w-full h-full rounded-md aspect-auto">
+                    <h4 class=" capitalize text-white hover:text-slate-800 font-medium text-center text-sm absolute pt-24 w-full rounded-md via-secondColor duration-700 to-transparent bg-gradient-to-t from-thirdColor from-10% via-30% h-full left-[50%] -translate-x-[50%] ">{{ category.title }}</h4>
                 </div>
             </nuxt-link>
         </div>
