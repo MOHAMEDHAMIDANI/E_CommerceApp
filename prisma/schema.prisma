@@ -26,6 +26,8 @@ model OrderItem {
   id         Int       @id @default(autoincrement())
   orderId    Int
   productId  Int
+  quantity   Int
+  color      String
   created_at DateTime? @default(now()) @db.Timestamptz(6)
   order      Orders    @relation(fields: [orderId], references: [id])
   product    Products  @relation(fields: [productId], references: [id])
@@ -37,8 +39,7 @@ model Products {
   description String
   isfav Boolean @default(false)
   isInCart Boolean @default(false)
-  bought Boolean @default(false)
-  cuantity Int
+  quantity Int
   category String
   url         String[]
   price       Int
