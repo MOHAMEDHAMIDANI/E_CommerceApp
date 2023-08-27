@@ -3,9 +3,9 @@
         <div @click="MoveToTheLeft()"  class="absolute w-7 h-full flex  top-0 -left-8 z-10 hover:bg-white rounded-s-md shadow duration-500 cursor-pointer">
             <Icon  name="ic:round-arrow-back-ios" size="30" color="black" class="m-auto" />
         </div>
-        <slider id="slider">
-            <slot />
-        </slider>
+            <div ref="slider" class="flex overflow-auto scroll-smooth py-1 gap-2">
+        <slot />
+    </div>
         <div @click="MoveToTheRight()" class="absolute w-7 h-full flex  top-0 -right-8 z-10 hover:bg-white rounded-e-md shadow duration-500 cursor-pointer">
             <Icon name="ic:round-arrow-forward-ios" size="30" color="black" class="m-auto" />
         </div>
@@ -13,34 +13,33 @@
 </template>
 
 <script setup lang="ts">
+const slider = ref("slider");
 onMounted(() => {
-    const slider = document.getElementById('slider') as HTMLElement;
-    slider.scrollLeft = 0;
-    
+    slider.value.scrollLeft = 0;
     const AutoScroll =() => {
-        if(slider.scrollLeft < (slider.scrollWidth - slider.clientWidth) || slider.scrollLeft > 0) {
-            slider.scrollLeft += (slider.scrollWidth / slider.childElementCount);
+        if(slider.value.scrollLeft < (slider.value.scrollWidth - slider.value.clientWidth) || slider.value.scrollLeft > 0) {
+            slider.value.scrollLeft += (slider.value.scrollWidth / slider.value.childElementCount);
         }
-        if(slider.scrollLeft == (slider.scrollWidth - slider.clientWidth)) {
-            slider.scrollLeft = 0;
+        if(slider.value.scrollLeft == (slider.value.scrollWidth - slider.value.clientWidth)) {
+            slider.value.scrollLeft = 0;
         }
 }
 setInterval(AutoScroll , 5000)
 })
 
 const MoveToTheLeft = () => {
-    if(slider.scrollLeft = 0) {
-    slider.scrollLeft = (slider.scrollWidth - slider.clientWidth);
+    if(slider.value.scrollLeft = 0) {
+    slider.value.scrollLeft = (slider.value.scrollWidth - slider.value.clientWidth);
     }else {
-        slider.scrollLeft -= (slider.scrollWidth / slider.childElementCount);
+        slider.value.scrollLeft -= (slider.value.scrollWidth / slider.value.childElementCount);
     }
 
 }
 const MoveToTheRight = () => {
-    if(slider.scrollLeft == (slider.scrollWidth - slider.clientWidth)) {
-        slider.scrollLeft = 0;
+    if(slider.value.scrollLeft == (slider.value.scrollWidth - slider.value.clientWidth)) {
+        slider.value.scrollLeft = 0;
     }else {
-        slider.scrollLeft += (slider.scrollWidth / slider.childElementCount);
+        slider.value.scrollLeft += (slider.value.scrollWidth / slider.value.childElementCount);
     }
 }
 

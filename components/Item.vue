@@ -2,7 +2,7 @@
     <div class="w-[230px]  my-auto h-[300px] shadow-md rounded">
         <div class="w-full h-[180px] relative  ">
             <nuxt-link :to="{ name: 'Item-id', params: { id: id } }">
-                <img :src="url[0]" alt=""
+                <img :src="url[0]" alt="" loading="lazy"
                     class="rounded-t  object-fill  object-center w-full h-full">
             </nuxt-link>
             <button v-if="isfav" @Click="ToggleFav(id , isfav)">
@@ -24,7 +24,7 @@
                         class="text-[10px] font-bold text-slate-900 absolute font-sm top-0 right-0">.99</span> </h5>
             </div>
             <div class="w-full h-9">
-                <p class="w-full h-full ml-1 text-[10px] font-semibold break-words text-slate-500 overflow-hidden">{{
+                <p class="w-full h-full ml-1 px-1 text-[10px] font-semibold break-words text-slate-500 overflow-hidden">{{
                     description }}</p>
             </div>
             <div class="flex justify-between content-center w-full h-[40px]">
@@ -50,7 +50,7 @@ interface productInfo {
     rating: number,
 }
 const props = defineProps<productInfo>()
-const ToggleFav = async (id : number , isfav : boolean | null) => {
+const ToggleFav = async (id : number , isfav : boolean | null ) => {
     try {
         isfav = !isfav;
         const { error } = await supabase.from('products').update({

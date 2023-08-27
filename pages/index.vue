@@ -5,14 +5,16 @@
     <category />
     <Section name="hello there">
       <Carousel>
-        <Item v-for="product in products" :key="product.id" :id="product.id" :title="product.title"
+        <Alert v-if="!products" />
+        <Item v-else v-for="product in products" :key="product.id" :id="product.id" :title="product.title"
           :description="product.description" :isfav="product.isfav" :isInCart="product.isInCart" :url="product.url"
           :price="product.price" :rating="product.rating" />
       </Carousel>
     </Section>
     <Section :name="'deals you might like'" id="deals" >
         <Carousel >
-            <Item v-for="product in products" :key="product.id" :id="product.id" :title="product.title" :description="product.description" :isfav="product.isfav" :isInCart="product.isInCart" :url="product.url" :price="product.price" :rating="product.rating" />
+          <Alert v-if="!store.Products" />
+            <Item v-else v-for="product in store.Products " :key="product.id" :id="product.id" :title="product.title" :description="product.description" :isfav="product.isfav" :isInCart="product.isInCart" :url="product.url" :price="product.price" :rating="product.rating" />
         </Carousel>
         </Section>
         <Section :name="'new products'" id="new" >
@@ -24,26 +26,29 @@
 </template>
 
 <script setup lang="ts">
+import { useFetchStore } from '../stores/Fetch';
 import Mainlayout from '../layouts/Mainlayout.vue';
+const store  = useFetchStore()
 interface Product {
   id: number,
   title: string,
   description: string,
   isfav: boolean | null,
   isInCart: boolean | null,
-  cuantity: number,
+  quantity: number,
   category: string,
   url: string[],
   price: number,
   rating: number,
   created_at: Date | null,
 }
-// const products = ref<Product[]>();
+const products = ref<Product[]>();
 onBeforeMount(async () => {
+await store.FetchAllProducts();
+console.log(store.Products)
   try {
-    const fetchedProducts = await useFetch(`/api/prisma/get-all-products`);
-    console.log(fetchedProducts)
-    const products : Product[] = fetchedProducts.data._rawValue;
+    const { data , error } = await useFetch(`/api/prisma/get-all-products`);
+    products.value = await store.FetchAllProducts();
     console.log(products)
   } catch (error) {
     // to do later on alert stuff 
