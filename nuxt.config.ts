@@ -3,15 +3,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   pages: true,
   modules: [
-    'nuxt-icon', 
-    'nuxt-lodash', 
-    '@nuxtjs/supabase', 
+    'nuxt-icon',
+    'nuxt-lodash',
+    '@nuxtjs/supabase',
     '@formkit/auto-animate',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
     '@vueuse/motion/nuxt',
-    // '@nuxt/image',
+    // '@nuxt/image'
   ],
   css: ['~/assets/css/main.css'],
   postcss: {

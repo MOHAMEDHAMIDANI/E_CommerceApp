@@ -71,8 +71,8 @@
 </template>
 
 <script setup lang="js">
-const supabase = useSupabaseClient()
 import Mainlayout from '../layouts/Mainlayout.vue';
+const supabase = useSupabaseClient()
 const router = useRouter();
 const isRegister = ref(true)
 const LoginEmail = ref('');
@@ -125,4 +125,6 @@ const SignIn = async () => {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

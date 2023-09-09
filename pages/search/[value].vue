@@ -68,9 +68,8 @@
                     </div>
             </div>
         </div>
-        <div class="">
             <Section :name="'results for : ' + searchValue" >
-                <Item />
+            <Item />
             <Item />
             <Item />
             <Item />
@@ -81,7 +80,6 @@
             <Item />
             <Item />
             </Section>
-        </div>
     </Mainlayout>
 </template>
 

@@ -112,7 +112,7 @@
                 <Icon class="my-auto" name="ph:shopping-cart-simple-bold" size="25" color="grey" />
                 <h3 class="text-center text-sm">Cart</h3>
                 <span
-                  class="w-[13px] rounded-full text-[8px] border-2 border-transparent text-white text-center h-[14px] bg-mainColor absolute top-[2px] left-[13px]">20</span>
+                  class="w-[13px] rounded-full text-[8px] border-2 border-transparent text-white text-center h-[14px] bg-mainColor absolute top-[2px] left-[13px]">{{  store.CartProducts.length }}</span>
               </div>
             </nuxt-link>
           </div>
@@ -124,6 +124,8 @@
 
 <script setup lang="ts">
 //importing stuff 
+import { useFetchStore } from '../stores/Fetch';
+const store = useFetchStore()
 
 // deceleration 
 

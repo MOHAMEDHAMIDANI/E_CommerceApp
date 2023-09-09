@@ -5,11 +5,11 @@
                 <img :src="url[0]" alt="" loading="lazy"
                     class="rounded-t  object-fill  object-center w-full h-full">
             </nuxt-link>
-            <button v-if="isfav" @Click="ToggleFav(id , isfav)">
+            <button v-if="isfav" @Click="store.toggleFavorite(id , isfav)">
                 <Icon v-motion-pop name="material-symbols:heart-check-outline" size="30" color="white"
                     class="absolute top-1 right-1 rounded-full w-7 h-7 border-2 pt-1 p-0.5 bg-secondColor cursor-pointer" />
             </button>
-            <button v-else @click="ToggleFav(id , isfav)">
+            <button v-else @click="store.ToggleFavorite(id , isfav)">
                 <Icon v-motion-pop name="material-symbols:favorite-outline" size="30" color="black"
                     class="absolute top-1 right-1 rounded-full w-7 h-7 border-2 pt-1 p-0.5 bg-slate-50 cursor-pointer" />
             </button>
@@ -28,7 +28,7 @@
                     description }}</p>
             </div>
             <div class="flex justify-between content-center w-full h-[40px]">
-                <Btn @click="ToggleCart()" :condition="isInCart" :Text="'added to cart'" :secondText="'add to cart'"
+                <Btn @click="toggleCart(id , isInCart )" :condition="isInCart" :Text="'added to cart'" :secondText="'add to cart'"
                     :Width="'100px'" :Height="'30px'" class="ml-1" />
                 <DisplayRating :ratingNum="rating" />
             </div>
@@ -42,32 +42,36 @@ interface productInfo {
     id: number,
     title: string,
     description: string,
-    isfav: boolean | null,
-    isInCart: boolean | null,
+    isfav: boolean ,
+    isInCart: boolean ,
     category: string,
     url: string[],
     price: number,
     rating: number,
 }
-const props = defineProps<productInfo>()
-const ToggleFav = async (id : number , isfav : boolean | null ) => {
-    try {
-        isfav = !isfav;
-        const { error } = await supabase.from('products').update({
-            isfav: isfav
-        }).eq('id' , id)
-        if ( error) throw error
-    } catch (error) {
-        console.log(error);
-        
-    }
-}
 
 
-const ToggleCart = async (id : number) => {
-    isInCart = !isInCart.value;
-}
+const { id, isfav, isInCart } = defineProps<productInfo>();
 
+const toggleFavorite = async (id: number, value: boolean) => {
+  value = !value;
+  try {
+    const { error } = await supabase.from('products').update({ isfav: value }).eq('id', id);
+    if (error) throw error;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const toggleCart = async (id: number, value: boolean) => {
+  value = !value;
+  try {
+    const { error } = await supabase.from('products').update({ isInCart: value }).eq('id', id);
+    if (error) throw error;
+  } catch (error) {
+    console.error(error);
+  }
+};
 </script>
 
 <style scoped></style>

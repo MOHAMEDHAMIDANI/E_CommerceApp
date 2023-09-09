@@ -14,7 +14,7 @@
                         </div>
                         <div class="w-full flex justify-between content-center">
                             <div class="flex flex-col justify-center content-center">
-                                <h3 class="capitalize font-semibold text-xl text-center text-black ">pc gamer </h3>
+                                <h3 class="capitalize font-semibold text-xl text-center text-black "> {{store.SingleProduct.title}} </h3>
                                 <span class="capitalize font-medium text-sm text-center text-slate-400"> default color :
                                     black</span>
                             </div>
@@ -75,10 +75,10 @@
             <!-- order summery  -->
             <div class=" mt-5 xl:w-[500px] lg:w-[820px] md:w-[550px] rounded-md border-2 mx-auto border-gray-400">
                 <h3 class="capitalize px-5 mt-2 text-xl font-semibold text-slate-800">order summery</h3>
-                <div class="mt-5 relative flex justify-center content-center">
+                <div class="mt-5 w-[400px] mx-auto relative flex justify-center content-center">
                     <input type="text" placeholder="enter coupon code"
-                        class="w-[400px] p-1 pl-2 mx-auto rounded-full bg-gray-100 outline-secondColor">
-                    <Btn class="absolute top-1 right-12" :Text="'apply'" :condition="true" />
+                        class="w-[400px] p-1 pl-2 mx-auto relative rounded-full bg-gray-100 outline-secondColor">
+                    <Btn class="absolute top-1 right-2" :Text="'apply'" :condition="true" />
                 </div>
                 <div class="mt-5">
                     <h3 class="capitalize px-5 mt-2 text-md font-semibold text-slate-800">payment details</h3>
@@ -136,6 +136,10 @@
 
 <script setup lang="ts">
 import Mainlayout from '../../layouts/Mainlayout.vue'
+import {useFetchStore} from '../../stores/Fetch'
+const store  = useFetchStore()
+
+
 </script>
 
 <style scoped></style>

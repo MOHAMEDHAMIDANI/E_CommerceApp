@@ -3,7 +3,7 @@
         <div @click="MoveToTheLeft()"  class="absolute w-7 h-full flex  top-0 -left-8 z-10 hover:bg-white rounded-s-md shadow duration-500 cursor-pointer">
             <Icon  name="ic:round-arrow-back-ios" size="30" color="black" class="m-auto" />
         </div>
-            <div ref="slider" class="flex overflow-auto scroll-smooth py-1 gap-2">
+            <div ref="slider" class="flex justify-between overflow-auto scroll-smooth py-1 gap-5 ">
         <slot />
     </div>
         <div @click="MoveToTheRight()" class="absolute w-7 h-full flex  top-0 -right-8 z-10 hover:bg-white rounded-e-md shadow duration-500 cursor-pointer">

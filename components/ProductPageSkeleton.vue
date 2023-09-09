@@ -1,33 +1,38 @@
 <template>
     <mainlayout>
-        <!-- <ProductPageSkeleton v-if="!loading" /> -->
-        <div  class="container  mx-auto my-5">
+        <div class="container  mx-auto my-5 ">
             <div class="flex justify-center flex-wrap w-full xl:gap-20 md:gap-0 ">
                 <!-- galore  -->
                 <div class="mt-5">
-                    <div class="w-[600px] h-[400px] p-1">
-                        <img v-if="currentImg != ''" v-motion-left :src="currentImg" alt=""
-                            class="w-full h-full object-fil object-center border-2 border-thirdColor rounded-md">
+                    <div class="w-[600px] skeleton bg-gray-200 h-[400px] p-1 border-2 border-thirdColor rounded-md">
+
                     </div>
-                    <div v-if="store.SingleProduct.url" class=" w-full h-12 flex justify-evenly">
-                        <div v-for="img  in store.SingleProduct.url" :key="img">
-                            <img @mouseover="currentImg = img" @click="currentImg = img" :src="img" alt=""
-                                class="object-cover object-center w-14 h-10  border-2 cursor-pointer my-auto hover:border-secondColor rounded-md"
-                                :class="currentImg === img ? 'border-secondColor' : 'border-gray-100'">
+                    <div  class=" w-full h-12 flex justify-evenly">
+                        <div class="flex justify-around w-full mt-2">
+                                <div class="w-14 h-10  border-2 bg-gray-200 rounded-md skeleton">
+                                </div>
+                                <div class="w-14 h-10  border-2 bg-gray-200 rounded-md skeleton">
+                                </div>
+                                <div class="w-14 h-10  border-2 bg-gray-200 rounded-md skeleton" >
+                                </div>
+                                <div class="w-14 h-10  border-2 bg-gray-200 rounded-md skeleton">
+                                </div>
+                                <div class="w-14 h-10  border-2 bg-gray-200 rounded-md skeleton">
+                                </div>
                         </div>
                     </div>
                 </div>
                 <!-- info section -->
                 <div class=" w-[600px]  mt-5 p-1">
                     <div class="bg-rd-800 w-full h-full p-2 ">
-                        <h3 class=" capitalize font-bold text-2xl pb-1 text-slate-900 w-60 overflow-hidden "> {{
-                            store.SingleProduct.title }}</h3>
-                        <p class="capitalize font-semibold text-sm  text-slate-700 w-full break-words"> {{
-                            store.SingleProduct.description }}</p>
-                        <DisplayRating :ratingNum="store.SingleProduct.rating" class="mt-2 w-28" />
+                        <h3 class="skeleton capitalize font-bold text-2xl pb-1 text-slate-900 w-60  bg-gray-200 h-5 "></h3>
+                        <p class=" skeleton capitalize font-semibold text-sm  text-slate-700 break-words bg-gray-200 w-52 h-5 mt-1"> </p>
+                        <p class="skeleton capitalize font-semibold text-sm  text-slate-700 break-words bg-gray-200 w-48 h-5 mt-1"> </p>
+                        <p class="skeleton capitalize font-semibold text-sm  text-slate-700 break-words bg-gray-200 w-32 h-5 mt-1"> </p>
+
+                        <DisplayRating class="mt-2 w-28 " />
                         <hr class="w-full h-1 my-2 ">
-                        <h1 class="text-slate-900 text-xl font-semibold w-fit  mx-auto ">$ {{ store.SingleProduct.price }}
-                        </h1>
+                        <h1 class="text-slate-900 text-xl font-semibold mx-auto bg-gray-200 w-52 h-5 skeleton"></h1>
                         <hr class="w-full h-1 mt-2.5 mb-2">
                         <div>
                             <h3 class="font-semibold text-slate-900 capitalize ">
@@ -63,7 +68,7 @@
                             </div>
                         </div>
                         <div class="w-full flex gap-1 mt-5 ">
-                            <nuxt-link :to="{ name: 'Checkout-id', params: { id: store.SingleProduct.id } }">
+                            <nuxt-link :to="{ name: 'Checkout-id', params: { id: 10 } }">
                                 <Btn :condition="true" :Text="'buy now'" class="w-[180px] h-8 text-md" />
                             </nuxt-link>
                             <Btn :condition="false" :Text="'added to cart'" :secondText="'add to cart'"
@@ -74,9 +79,7 @@
             </div>
             <Section :name="'similar items you might like'">
                 <Carousel>
-                    <Item v-for="product in store.Products" :key="product.id" :id="product.id" :title="product.title"
-                        :description="product.description" :isfav="product.isfav" :isInCart="product.isInCart"
-                        :url="product.url" :price="product.price" :rating="product.rating" />
+                    <SkeletonItem />
                 </Carousel>
             </Section>
             <!-- comment section will add later on  -->
@@ -92,26 +95,20 @@
                 </div>
                 <div class="flex flex-col content-center mt-3">
                     <h3 class="capitalize text-slate-600 font-semibold  text-lg w-fit my-2">other people preview</h3>
-                    <div v-if="store.SingleProduct.comments">
-                        <div v-for="(comment, index) in store.SingleProduct.comments" :key="index"
+                    <div v-if="comments">
+                        <div v-for="(comment, index) in comments" :key="index"
                             class="my-1 p-2 border-2 border-mainColor rounded-md">
-                            <div class="flex justify-between content-center w-32 mb-2">
+                            <div class="flex justify-between content-center w-48 mb-2">
                                 <div
-                                    class="w-10 h-10 object-cover object-center rounded-full flex justify-between content-center">
-                                    <img src="../../assets/images/unnamed.jpg" alt=""
-                                        class="relative w-full h-full rounded-full">
+                                    class="w-10 skeleton h-10 object-cover object-center rounded-full flex justify-between content-center bg-gray-200">
                                 </div>
-                                <h3 class="text-md font-semibold capitalize my-auto">anonymous</h3>
+                                <h3 class="text-md skeleton font-semibold capitalize my-auto bg-gray-200 w-32 h-5"></h3>
                             </div>
-                            <p class="mx-2 text-sm font-medium text-slate-600">Lorem ipsum dolor sit amet consectetur,
-                                adipisicing elit. Maxime quo aliquam, doloribus reiciendis, quis quisquam recusandae
-                                temporibus facilis commodi nobis possimus excepturi veniam modi explicabo, autem suscipit
-                                magnam atque eaque.</p>
-                            <DisplayRating class="mx-2" />
+                            <p class="capitalize font-semibold text-sm skeleton text-slate-700 break-words bg-gray-200 w-52 h-5 mt-1"> </p>
+                        <p class="capitalize font-semibold text-sm skeleton text-slate-700 break-words bg-gray-200 w-48 h-5 mt-1"> </p>
+                        <p class="capitalize font-semibold text-sm skeleton text-slate-700 break-words bg-gray-200 w-32 h-5 mt-1"> </p>
+                            <DisplayRating class="mx-2 " />
                         </div>
-                    </div>
-                    <div v-else>
-                        <!-- if there is no comments  -->
                     </div>
                 </div>
             </div>
@@ -120,34 +117,17 @@
 </template>
 
 <script setup lang="ts">
-import { useFetchStore } from '../../stores/Fetch'
-import mainlayout from '../../layouts/Mainlayout.vue'
+const images: string[] = ['../../assets/images/photo-1581351123004-757df051db8e.avif', '../../assets/images/photo-1593640408182-31c70c8268f5.avif', '../../assets/images/photo-1597872200969-2b65d56bd16b.avif', '../../assets/images/photo-1626218174358-7769486c4b79.avif', '../../assets/images/photo-1630201129622-a8e8ef3f7245.avif'];
+const currentImg = ref(images[1]);
+const numOfItem = ref(1);
+const amount = ref(10);
+const colors: string[] = ['bg-red-400', 'bg-slate-700', 'bg-blue-700', 'bg-gray-200 ', 'bg-emerald-500'];
 interface comment {
     author: string,
     description: string,
     ratingNum: number,
     time: string,
 }
-const currentImg = ref();
-const route = useRoute();
-const store = useFetchStore()
-const loading = ref(false)
-const images: string[] = ['../../assets/images/photo-1581351123004-757df051db8e.avif', '../../assets/images/photo-1593640408182-31c70c8268f5.avif', '../../assets/images/photo-1597872200969-2b65d56bd16b.avif', '../../assets/images/photo-1626218174358-7769486c4b79.avif', '../../assets/images/photo-1630201129622-a8e8ef3f7245.avif'];
-const numOfItem = ref(1);
-const amount = ref(store.SingleProduct.quantity);
-const colors: string[] = ['bg-red-400', 'bg-slate-700', 'bg-blue-700', 'bg-gray-200 ', 'bg-emerald-500'];
-onBeforeMount(async () => {
-  const id = Number(route.params.id);
-  await store.FetchSingleProducts(id);
-  await store.FetchAllProducts();
-  console.log("store.SingleProduct:", store.SingleProduct); // Check the data received here
-  console.log("store.SingleProduct:", store.Products); // Check the data received here
-
- currentImg.value = store.SingleProduct.url[0];
-  setTimeout(() => {
-    loading.value = true;
-  }, 10000);
-});
 const comments: comment[] = [{
     author: '',
     description: '',
@@ -185,4 +165,22 @@ const comments: comment[] = [{
 },];
 </script>
 
-<style scoped></style>
+<style scoped>
+.skeleton {
+    opacity: 0.7;
+    animation: alternate infinite skeleton-animation linear 1s;
+}
+
+@keyframes skeleton-animation {
+
+    0% {
+        --tw-bg-opacity: 1;
+        background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+    }
+
+    100% {
+        --tw-bg-opacity: 0.9;
+        background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+    }
+}
+</style>
