@@ -1,7 +1,7 @@
 <template>
     <mainlayout>
-        <!-- <ProductPageSkeleton v-if="!loading" /> -->
-        <div  class="container  mx-auto my-5">
+        <ProductPageSkeleton v-if="loading" />
+        <div v-else class="container  mx-auto my-5">
             <div class="flex justify-center flex-wrap w-full xl:gap-20 md:gap-0 ">
                 <!-- galore  -->
                 <div class="mt-5">
@@ -9,8 +9,8 @@
                         <img v-if="currentImg != ''" v-motion-left :src="currentImg" alt=""
                             class="w-full h-full object-fil object-center border-2 border-thirdColor rounded-md">
                     </div>
-                    <div v-if="store.SingleProduct.url" class=" w-full h-12 flex justify-evenly">
-                        <div v-for="img  in store.SingleProduct.url" :key="img">
+                    <div v-if="SingleProduct.url" class=" w-full h-12 flex justify-evenly">
+                        <div v-for="img  in SingleProduct.url" :key="img">
                             <img @mouseover="currentImg = img" @click="currentImg = img" :src="img" alt=""
                                 class="object-cover object-center w-14 h-10  border-2 cursor-pointer my-auto hover:border-secondColor rounded-md"
                                 :class="currentImg === img ? 'border-secondColor' : 'border-gray-100'">
@@ -21,12 +21,12 @@
                 <div class=" w-[600px]  mt-5 p-1">
                     <div class="bg-rd-800 w-full h-full p-2 ">
                         <h3 class=" capitalize font-bold text-2xl pb-1 text-slate-900 w-60 overflow-hidden "> {{
-                            store.SingleProduct.title }}</h3>
+                            SingleProduct.title }}</h3>
                         <p class="capitalize font-semibold text-sm  text-slate-700 w-full break-words"> {{
-                            store.SingleProduct.description }}</p>
-                        <DisplayRating :ratingNum="store.SingleProduct.rating" class="mt-2 w-28" />
+                            SingleProduct.description }}</p>
+                        <DisplayRating :ratingNum="SingleProduct.rating" class="mt-2 w-28" />
                         <hr class="w-full h-1 my-2 ">
-                        <h1 class="text-slate-900 text-xl font-semibold w-fit  mx-auto ">$ {{ store.SingleProduct.price }}
+                        <h1 class="text-slate-900 text-xl font-semibold w-fit  mx-auto ">$ {{ SingleProduct.price }}
                         </h1>
                         <hr class="w-full h-1 mt-2.5 mb-2">
                         <div>
@@ -34,8 +34,8 @@
                                 choose a color :
                             </h3>
                             <div class="w-fit flex justify-around content-center mt-3 ">
-                                <div @click="currentImg = images[index]" v-for="(color, index) in colors" :key="index"
-                                    :class="color"
+                                <div @click="currentImg = SingleProduct.url[index]" v-for="(color, index) in colors"
+                                    :key="index" :class="color"
                                     class="w-6 h-6 mr-3 cursor-pointer border-2 border-transparent hover:outline outline-2 outline-offset-2 outline-black rounded-full relative">
                                     <div
                                         class="absolute w-full h-full bg-white opacity-40 backdrop-blur-md drop-shadow-sm rounded-full ">
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="w-full flex gap-1 mt-5 ">
-                            <nuxt-link :to="{ name: 'Checkout-id', params: { id: store.SingleProduct.id } }">
+                            <nuxt-link :to="{ name: 'Checkout-id', params: { id: SingleProduct.id } }">
                                 <Btn :condition="true" :Text="'buy now'" class="w-[180px] h-8 text-md" />
                             </nuxt-link>
                             <Btn :condition="false" :Text="'added to cart'" :secondText="'add to cart'"
@@ -74,7 +74,7 @@
             </div>
             <Section :name="'similar items you might like'">
                 <Carousel>
-                    <Item v-for="product in store.Products" :key="product.id" :id="product.id" :title="product.title"
+                    <Item v-for="product in Products" :key="product.id" :id="product.id" :title="product.title"
                         :description="product.description" :isfav="product.isfav" :isInCart="product.isInCart"
                         :url="product.url" :price="product.price" :rating="product.rating" />
                 </Carousel>
@@ -92,8 +92,8 @@
                 </div>
                 <div class="flex flex-col content-center mt-3">
                     <h3 class="capitalize text-slate-600 font-semibold  text-lg w-fit my-2">other people preview</h3>
-                    <div v-if="store.SingleProduct.comments">
-                        <div v-for="(comment, index) in store.SingleProduct.comments" :key="index"
+                    <div v-if="SingleProduct.comments">
+                        <div v-for="(comment, index) in SingleProduct.comments" :key="index"
                             class="my-1 p-2 border-2 border-mainColor rounded-md">
                             <div class="flex justify-between content-center w-32 mb-2">
                                 <div
@@ -121,6 +121,7 @@
 
 <script setup lang="ts">
 import { useFetchStore } from '../../stores/Fetch'
+import { storeToRefs } from 'pinia';
 import mainlayout from '../../layouts/Mainlayout.vue'
 interface comment {
     author: string,
@@ -131,22 +132,15 @@ interface comment {
 const currentImg = ref();
 const route = useRoute();
 const store = useFetchStore()
-const loading = ref(false)
-const images: string[] = ['../../assets/images/photo-1581351123004-757df051db8e.avif', '../../assets/images/photo-1593640408182-31c70c8268f5.avif', '../../assets/images/photo-1597872200969-2b65d56bd16b.avif', '../../assets/images/photo-1626218174358-7769486c4b79.avif', '../../assets/images/photo-1630201129622-a8e8ef3f7245.avif'];
+const { loading, SingleProduct, Products } = storeToRefs(store);
 const numOfItem = ref(1);
-const amount = ref(store.SingleProduct.quantity);
+const amount = ref(SingleProduct.value.quantity);
 const colors: string[] = ['bg-red-400', 'bg-slate-700', 'bg-blue-700', 'bg-gray-200 ', 'bg-emerald-500'];
 onBeforeMount(async () => {
-  const id = Number(route.params.id);
-  await store.FetchSingleProducts(id);
-  await store.FetchAllProducts();
-  console.log("store.SingleProduct:", store.SingleProduct); // Check the data received here
-  console.log("store.SingleProduct:", store.Products); // Check the data received here
-
- currentImg.value = store.SingleProduct.url[0];
-  setTimeout(() => {
-    loading.value = true;
-  }, 10000);
+    const id = Number(route.params.id);
+    await store.FetchSingleProducts(id);
+    await store.FetchAllProducts();
+    currentImg.value = SingleProduct.value.url[0];
 });
 const comments: comment[] = [{
     author: '',

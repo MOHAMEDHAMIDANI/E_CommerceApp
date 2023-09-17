@@ -2,14 +2,13 @@
     <div class="w-[230px]  my-auto h-[300px] shadow-md rounded">
         <div class="w-full h-[180px] relative  ">
             <nuxt-link :to="{ name: 'Item-id', params: { id: id } }">
-                <img :src="url[0]" alt="" loading="lazy"
-                    class="rounded-t  object-fill  object-center w-full h-full">
+                <img :src="url[0]" alt="" loading="lazy" class="rounded-t  object-fill  object-center w-full h-full">
             </nuxt-link>
-            <button v-if="isfav" @Click="store.toggleFavorite(id , isfav)">
+            <button v-if="isfav" @Click="toggleFavorite">
                 <Icon v-motion-pop name="material-symbols:heart-check-outline" size="30" color="white"
-                    class="absolute top-1 right-1 rounded-full w-7 h-7 border-2 pt-1 p-0.5 bg-secondColor cursor-pointer" />
+                    class="absolute top-1 right-1  rounded-full w-7 h-7 border-2 pt-1 p-0.5 bg-secondColor cursor-pointer" />
             </button>
-            <button v-else @click="store.ToggleFavorite(id , isfav)">
+            <button v-else @Click="toggleFavorite">
                 <Icon v-motion-pop name="material-symbols:favorite-outline" size="30" color="black"
                     class="absolute top-1 right-1 rounded-full w-7 h-7 border-2 pt-1 p-0.5 bg-slate-50 cursor-pointer" />
             </button>
@@ -23,13 +22,13 @@
                         class="text-[10px] font-medium text-slate-900 top-0 left-0 absolute">$</span><span
                         class="text-[10px] font-bold text-slate-900 absolute font-sm top-0 right-0">.99</span> </h5>
             </div>
-            <div class="w-full h-9">
+            <div class="w-full h-12">
                 <p class="w-full h-full ml-1 px-1 text-[10px] font-semibold break-words text-slate-500 overflow-hidden">{{
                     description }}</p>
             </div>
             <div class="flex justify-between content-center w-full h-[40px]">
-                <Btn @click="toggleCart(id , isInCart )" :condition="isInCart" :Text="'added to cart'" :secondText="'add to cart'"
-                    :Width="'100px'" :Height="'30px'" class="ml-1" />
+                <Btn @click="toggleCart(id, isInCart)" :condition="isInCart" :Text="'added to cart'"
+                    :secondText="'add to cart'" :Width="'100px'" :Height="'30px'" class="ml-1" />
                 <DisplayRating :ratingNum="rating" />
             </div>
         </div>
@@ -42,8 +41,8 @@ interface productInfo {
     id: number,
     title: string,
     description: string,
-    isfav: boolean ,
-    isInCart: boolean ,
+    isfav: boolean,
+    isInCart: boolean,
     category: string,
     url: string[],
     price: number,
@@ -53,24 +52,18 @@ interface productInfo {
 
 const { id, isfav, isInCart } = defineProps<productInfo>();
 
-const toggleFavorite = async (id: number, value: boolean) => {
-  value = !value;
-  try {
-    const { error } = await supabase.from('products').update({ isfav: value }).eq('id', id);
-    if (error) throw error;
-  } catch (error) {
-    console.error(error);
-  }
+const toggleFavorite = async () => {
+    console.log('working properly ')
 };
 
 const toggleCart = async (id: number, value: boolean) => {
-  value = !value;
-  try {
-    const { error } = await supabase.from('products').update({ isInCart: value }).eq('id', id);
-    if (error) throw error;
-  } catch (error) {
-    console.error(error);
-  }
+    value = !value;
+    try {
+        const { error } = await supabase.from('products').update({ isInCart: value }).eq('id', id);
+        if (error) throw error;
+    } catch (error) {
+        console.error(error);
+    }
 };
 </script>
 

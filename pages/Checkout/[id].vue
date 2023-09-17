@@ -1,6 +1,6 @@
 <template>
     <Mainlayout>
-        <!-- <h3 class="relative top-4 text-black capitalize -right-10"> {{ useRouter().currentRoute.value.fullPath }} </h3> -->
+
         <div class="container mx-auto my-4 w-full flex justify-between flex-wrap ">
             <!-- main one  -->
             <div class=" xl:w-[1000px] lg:w-[820px] md:w-[550px] mx-auto h-full ">

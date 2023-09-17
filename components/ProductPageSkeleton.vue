@@ -120,7 +120,7 @@
 const images: string[] = ['../../assets/images/photo-1581351123004-757df051db8e.avif', '../../assets/images/photo-1593640408182-31c70c8268f5.avif', '../../assets/images/photo-1597872200969-2b65d56bd16b.avif', '../../assets/images/photo-1626218174358-7769486c4b79.avif', '../../assets/images/photo-1630201129622-a8e8ef3f7245.avif'];
 const currentImg = ref(images[1]);
 const numOfItem = ref(1);
-const amount = ref(10);
+const amount = ref(0);
 const colors: string[] = ['bg-red-400', 'bg-slate-700', 'bg-blue-700', 'bg-gray-200 ', 'bg-emerald-500'];
 interface comment {
     author: string,
