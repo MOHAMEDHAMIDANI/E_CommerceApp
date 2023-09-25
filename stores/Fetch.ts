@@ -47,11 +47,12 @@ export const useFetchStore = defineStore('Fetch', {
         async FetchProductByCategory(category: string) {
             try {
                 this.loading = true;
-
+                const { data , error } = await useFetch(`/api/prisma/getcategory/${category}`) 
+                this.ProductByCategory = await data.value ;
                 this.loading = false;
-
+                if(error) throw error
             } catch (error) {
-
+                console.error(error.message)
             }
         },
         async FetchSearching(search: string) {

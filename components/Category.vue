@@ -1,7 +1,7 @@
 <template>
     <div class="container mx-auto my-10">
         <h3 class=" capitalize text-left text-slate-700 mb-2 font-semibold">shop our top categories</h3>
-        <div class=" flex justify-evenly gap-2 h-[230px]">
+        <div class=" flex justify-evenly gap-3 h-[230px]">
             <nuxt-link :to="{name:'category-name' , params : {name : category.title}}" v-for=" category in categories" :key="category" class="my-auto shadow-lg rounded-md">
                 <div class="w-[120px] h-[190px] my-auto  relative hover:scale-110 duration-500">
                     <img :src="category.image" alt="" class="absolute object-cover  object-center w-full h-full rounded-md aspect-auto">
