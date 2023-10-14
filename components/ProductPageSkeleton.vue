@@ -145,23 +145,6 @@ const comments: comment[] = [{
 
     ratingNum: 4,
     time: '',
-}, {
-    author: '',
-    description: '',
-
-    ratingNum: 4,
-    time: '',
-}, {
-    author: '',
-    description: '',
-
-    ratingNum: 4,
-    time: '',
-}, {
-    author: '',
-    description: '',
-    ratingNum: 4,
-    time: '',
 },];
 </script>
 
